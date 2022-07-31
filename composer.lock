@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b088662b1e72b9c368affc2f25bdcee8",
+    "content-hash": "ece045c20db70706ddb3120d03278f64",
     "packages": [
         {
             "name": "brick/math",
@@ -1266,16 +1266,16 @@
         },
         {
             "name": "laravel/ui",
-            "version": "v3.4.6",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/ui.git",
-                "reference": "65ec5c03f7fee2c8ecae785795b829a15be48c2c"
+                "reference": "ed323a2473173e0d4ac633e3108d9f0ed10b255d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/ui/zipball/65ec5c03f7fee2c8ecae785795b829a15be48c2c",
-                "reference": "65ec5c03f7fee2c8ecae785795b829a15be48c2c",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/ed323a2473173e0d4ac633e3108d9f0ed10b255d",
+                "reference": "ed323a2473173e0d4ac633e3108d9f0ed10b255d",
                 "shasum": ""
             },
             "require": {
@@ -1291,7 +1291,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.x-dev"
+                    "dev-master": "4.x-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -1321,9 +1321,9 @@
                 "ui"
             ],
             "support": {
-                "source": "https://github.com/laravel/ui/tree/v3.4.6"
+                "source": "https://github.com/laravel/ui/tree/master"
             },
-            "time": "2022-05-20T13:38:08+00:00"
+            "time": "2022-07-21T23:38:24+00:00"
         },
         {
             "name": "league/commonmark",
@@ -7814,7 +7814,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "laravel/ui": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

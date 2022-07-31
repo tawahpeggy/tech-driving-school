@@ -35,3 +35,7 @@ Route::group(['prefix'=>'user' ,'middleware'=>['isUser','auth']],function(){
     Route::get('profile',[UserController::class,'profile'])->name('user.profile');
     Route::get('settings',[UserController::class,'settings'])->name('user.settings');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
