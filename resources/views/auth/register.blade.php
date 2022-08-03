@@ -43,8 +43,6 @@
         height: 500px;
         align-items: center;
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
-
-
     }
 
     .box2 {
@@ -53,19 +51,7 @@
         border-bottom-right-radius: 20px;
         border-top-right-radius: 20px;
         height: 500px;
-        /*box-shadow: 10px 10px;*/
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
-
-
-    }
-
-    .input {
-        /* margin: 8px; */
-        /* width: 75px;
-        height: 30px;
-        border-radius: 5px; */
-        /* margin-left: 5px; */
-
     }
 
     #text {
@@ -80,7 +66,6 @@
         display: inline;
         margin: 0;
         padding: 0%;
-        /* margin-left: 3px; */
 
     }
 
@@ -111,14 +96,7 @@
         color: blue;
     }
 
-
-    label {
-        /* font-sizes: small; */
-        /* margin-left: 15px; */
-    }
-
     #text2 {
-        /* margin-left: 10%; */
         text-align: center;
         margin: 5%;
     }
@@ -143,6 +121,7 @@
         justify-content: center;
         margin: 0,auto
     }
+
 </style>
 @section('content')
 
@@ -248,41 +227,3 @@
         </div>
     </body>
 @endsection
-
-{{-- <!-- zinkeng -->
-<style>
-</style>
-
-<body>
-    <div class="item">
-        <div class="item2">
-            <main>
-                <div class="box1"></div>
-                <div class="box2">
-                    <div class="form1">
-                        <h2>Hello Again!</h2>
-                        <p id="text2">Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
-                        <form action="" method="post">
-                            <input class="input" type="email" placeholder="Email" required><br>
-                            <input class="input" type="password" placeholder="Password" required><br>
-
-                            <div class="horizontal">
-                                <label>
-                                    <input type="checkbox">
-                                    Remember me
-                                </label><br>
-
-                                <a id="pass" href="/#">Recover Password</a><br>
-                            </div>
-                            <button class="bt">Login</button>
-
-
-
-                    </div>
-                    </form>
-                    <p>Don't have an account yet? <a href="/#"><b>Sign Up</b></a></p>
-                </div>
-            </main>
-        </div>
-    </div>
-</body> --}}
