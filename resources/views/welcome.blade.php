@@ -9,6 +9,8 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/home.css') }}" rel="stylesheet">
+        
 
         <!-- Styles -->
         <!-- <style>
@@ -315,7 +317,54 @@ background-color: rgb(50, 50, 51);
 
                 </div>
             </div>
+
+            {{-- Homepage carousel--}}
+
+            <main>
+           
+
+            <div class="carousel-wrapper">
+                
+               <span id="item-1"></span>
+                <span id="item-2"></span>
+                <span id="item-3"></span>
+                <div class="carousel-item item-1">
+                    <div class="container">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies, neque et sodales iaculis, mauris urna lacinia nulla, eu lobortis ligula tortor eu nisi. </p>
+                    <button class="bt">Know More</button>
+                </div>
+                    <a href="#item-3" class="arrow-prev arrow"></a>
+                    <a href="#item-2" class="arrow-next arrow"></a>
+                </div>
+
+                <div class="carousel-item item-2">
+                    <div class="container">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies, neque et sodales iaculis, mauris urna lacinia nulla, eu lobortis ligula tortor eu nisi. </p>
+                    <button class="bt">Know More</button>
+                </div>
+                    <a href="#item-1" class="arrow-prev arrow"></a>
+                    <a href="#item-3" class="arrow-next arrow"></a>
+                </div>
+
+                <div class="carousel-item item-3">
+                    <div class="container">
+                    <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies, neque et sodales iaculis, mauris urna lacinia nulla, eu lobortis ligula tortor eu nisi. </p>
+                    <button class="bt">Know More</button>
+                </div>
+                    <a href="#item-2" class="arrow-prev arrow"></a>
+                    <a href="#item-1" class="arrow-next arrow"></a>
+                </div>
+            
+        
         </div>
+       
+
+    
+    </main>
+
+
+        </div>
+
         {{-- footer --}}
         <footer>
             <div class="footer">
