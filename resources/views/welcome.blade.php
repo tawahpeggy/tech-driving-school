@@ -10,7 +10,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/home.css') }}" rel="stylesheet">
-        
+
 
         <!-- Styles -->
         <!-- <style>
@@ -246,7 +246,7 @@ background-color: rgb(50, 50, 51);
 .text{
     margin-top: 0;
     padding-top: 30px;
-    background-image: linear-gradient( #FDFF00, #FFD300, #FCE883, #d9ae12);
+    background-image: linear-gradient(to right, #FDFF00, #FFD300, #FCE883, #d9ae12);
     width: 100%;
     height: 10vh;
 
@@ -321,10 +321,10 @@ background-color: rgb(50, 50, 51);
             {{-- Homepage carousel--}}
 
             <main>
-           
+
 
             <div class="carousel-wrapper">
-                
+
                <span id="item-1"></span>
                 <span id="item-2"></span>
                 <span id="item-3"></span>
@@ -354,16 +354,9 @@ background-color: rgb(50, 50, 51);
                     <a href="#item-2" class="arrow-prev arrow"></a>
                     <a href="#item-1" class="arrow-next arrow"></a>
                 </div>
-            
-        
         </div>
-       
-
-    
     </main>
-
-
-        </div>
+       </div>
 
         {{-- footer --}}
         <footer>
@@ -373,7 +366,6 @@ background-color: rgb(50, 50, 51);
                 <h1>Our Modes</h1>
                 <hr />
                 <p>All round year sessions</p>
-
                 <ol>
                   <li>Superfast mode</li>
                   <li>Fast Mode</li>
@@ -395,7 +387,7 @@ background-color: rgb(50, 50, 51);
                 </div>
 
                 <div class="location-info">
-                  <p>Driving School<br />Molyko-Buea</p>
+                  <p>Tech Driving School<br /> <br/>Molyko-Buea</p>
                 </div>
               </div>
 
@@ -406,7 +398,7 @@ background-color: rgb(50, 50, 51);
                 </div>
 
                 <div class="contact-info">
-                  2376xxxxxxxx<br>2376xxxxxxx
+                  +237 (678 663 298)<br/> <br/>  +237 (682 711 432)
 
                 </div>
               </div>
@@ -417,7 +409,7 @@ background-color: rgb(50, 50, 51);
                   <i class="fa fa-calendar fa-2x" style="color: white; padding-right: 10px;"></i>
                 </div>
                 <div class="days-info">
-                  <p>Modays - Fridays</p>
+                  <p>Mondays - Fridays</p>
                 </div>
               </div>
 
@@ -426,7 +418,7 @@ background-color: rgb(50, 50, 51);
               <div class="row3">
                 <div class="text">
                 <div class="copyright">
-                  Copyright @2022 Driving School. ALL RIGHTS RESERVED
+                  Copyright @2022 Tech Driving School. ALL RIGHTS RESERVED
                 </div>
                 <div class="foot">
                 <div class="column">Privacy Policy</div>
