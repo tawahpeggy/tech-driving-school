@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 
@@ -64,7 +65,7 @@
   overflow: hidden;
 }
 
- button {
+ .dropdown button {
   border: none;
   outline: none;
   color: black;
@@ -72,7 +73,7 @@
   text-decoration: none;
   background-color: transparent;
   padding: 14px 16px;
-  font-size: 16px;
+  font-size: 19px;
 
 }
 
@@ -272,7 +273,7 @@ background-color: rgb(50, 50, 51);
 
 
 
-/********************************************************* home css ******************************************************/
+/********************************************************* HOME CSS ******************************************************/
 
 *{
     font-family: 'Times New Roman';
@@ -295,14 +296,14 @@ p{
 
 }
 
-button{
+/*button{
     color: black;
     background-color: yellow;
     border: none;
     font-size:xx-large;
     font-weight: bold;
 
-}
+}*/
 
 .bt{
     border: none;
@@ -346,9 +347,9 @@ button{
         background-size: cover;
     }
 }
-
-
 /********************************************home css end ****************************************************/
+
+/***********************************************************HTML HEADER***********************************/
 >>>>>>> faa8a916a1231b94400cfeb8ccddb10b9d7ff3fb
         </style>
     </head>
@@ -391,14 +392,10 @@ button{
             {{-- Homepage carousel--}}
 
             <div class="carousel-wrapper">
-
-               <span id="item-1"></span>
-                <span id="item-2"></span>
-                <span id="item-3"></span>
                 <div class="carousel-item item-1">
                     <div class="container">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies, neque et sodales iaculis, mauris urna lacinia nulla, eu lobortis ligula tortor eu nisi. </p>
-                    <button class="bt">Know More</button>
+                    <button style="color: black; background-color: yellow; border: none; font-size: xx-large; font-weight: bold;" class="bt">Know More</button>
                 </div>
               </div>
                  
