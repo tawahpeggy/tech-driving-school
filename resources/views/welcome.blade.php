@@ -18,6 +18,8 @@
         </style> -->
 
         <style>
+
+          /***************************************HEADER**************************************************************/
           * {
   margin: 0;
   padding: 0;
@@ -120,7 +122,7 @@
     }
 
 
-    /* footer */
+    /*********************************************************** FOOTER ***********************************************************/
     * {
   margin: 0;
   padding: 0;
@@ -205,6 +207,8 @@ background-color: rgb(50, 50, 51);
 
 }
 
+
+
 .row3 {
   margin: auto;
 
@@ -257,27 +261,7 @@ background-color: rgb(50, 50, 51);
 }
 
 
-/*
 
-
-
-
-
-  /* If you want the content centered horizontally and vertically
-  .centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
-
-  /* Style the image inside the centered container, if needed
-  .centered img {
-    width: 150px;
-    border-radius: 50%;
-  }
-  */
 
 
         </style>
@@ -386,10 +370,16 @@ background-color: rgb(50, 50, 51);
               <div class="bottom">
 
               <div class="row2">
+                <div>
                 <div class="subrow">
-                    <div>
-                        <img  class="logo-image nav-logo" src="{{ asset('images/logoImage.jpg') }}" alt="driving school logo" width="100rem">
+                        <img  class="logo-image nav-logo" src="{{ asset('images/logoImage.jpg') }}" alt="driving school logo" width="100rem" >
                     </div>
+                </div>
+
+
+
+                <div class="subrow">
+                    
                 <div class="location-icon">
                   <i class="fa fa-map-marker fa-2x" style="color: white; padding-right: 10px"></i>
                 </div>
