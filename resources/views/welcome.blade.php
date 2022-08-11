@@ -279,7 +279,131 @@ background-color: rgb(50, 50, 51);
   }
   */
 
+/* home css */
 
+*{
+    font-family: 'Times New Roman';
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+
+}
+
+
+p{
+    color: white;
+    font-size:xx-large;
+    text-align: center;
+
+}
+
+button{
+    color: black;
+    background-color: yellow;
+    border: none;
+    font-size:xx-large;
+    font-weight: bold;
+
+}
+
+.bt{
+    border: none;
+    width: 20%;
+    height: 70px;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 90px;
+}
+
+.container{
+    margin: auto;
+    margin-top: 15%;
+    margin-bottom: 25%;
+}
+
+.carousel-wrapper{
+    height: 100vh;
+    position: relative;
+    /*width: 400px;*/
+    display: block;
+    opacity: 1;
+
+
+    border: 2px solid black;
+}
+
+.carousel-item{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 20px 50px;
+    opacity: 0;
+    transition: all o.5s ease-in-out;
+}
+
+
+
+.arrow{
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 12px;
+}
+
+.arrow-prev{
+    left: 30px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(135deg);
+}
+
+.arrow-next{
+    right: 30px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+}
+
+[id="item"]{
+    display: none;
+}
+.item-1{
+    z-index: 2;
+    opacity: 1;
+    background: url({{ asset('images/car1.jpg') }});
+    background-size: cover;
+    background-color: rgba(0,0,0,0.25);
+}
+.item-2{
+    background: url({{asset('images/drive8.webp')}} );
+    background-size: cover;
+    background-color: rgba(0,0,0,0.25);
+}
+
+.item-3{
+    background: url({{ asset('images/drive9.jpg')}});
+    background-size: cover;
+    background-color: rgba(0,0,0,0.25);
+}
+*:target ~ .item-1{
+    opacity: 1;
+}
+#item-1:target ~ .item-1{
+    opacity: 1;
+}
+#item-2:target ~ .item-2, #item-3:target ~ .item-3{
+    z-index: 3;
+    opacity: 1;
+}
+
+/* home css end */
         </style>
     </head>
     <body>
