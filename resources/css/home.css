@@ -1,4 +1,4 @@
- *{
+*{
     font-family: 'Times New Roman';
     box-sizing: border-box;
     margin: 0;
@@ -51,10 +51,27 @@ button{
     opacity: 1;
     border: 2px solid black;
 
-    
+    background: url('car1.jpg');
+    background-size: cover;
+    animation: slide 20s infinite;
 }
 
-.carousel-item{
+@keyframes slide{
+    25%{
+        background: url('drive8.webp');
+        background-size: cover;
+    }
+    50%{
+        background: url('drive9.jpg');
+        background-size: cover;
+    }
+    75%{
+        background: url('car1.jpg');
+        background-size: cover;
+    }
+}
+
+/*.carousel-item{
     position: absolute;
     top: 0;
     left: 0;
@@ -63,10 +80,11 @@ button{
     padding: 20px 50px;
     opacity: 0;
     transition: all o.5s ease-in-out;
+    
 }
 
 
-
+/*
 .arrow{
     border: solid white;
     border-width: 0 3px 3px 0;
@@ -119,3 +137,4 @@ button{
     z-index: 3;
     opacity: 1;
 }
+*/
