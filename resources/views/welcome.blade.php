@@ -173,6 +173,11 @@
             border-right: 0;
             align-items: center;
         }
+        .column:hover {
+            background-color: black;
+            color: yellow;
+            cursor: pointer;
+        }
 
         /* .bottom {
             bottom: 0;
