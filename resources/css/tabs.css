@@ -1,0 +1,124 @@
+body{
+    font-family: 'Times New Roman', Times, serif;
+    background-color: rgb(129, 129, 211);
+  
+  }
+  
+  .navbar{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    margin: 50px auto;
+   
+  
+    float: right;
+    background-image: linear-gradient(to right,#ffff00,  #b3b300,#cccc00,  #ffff33,  #ffff4d);
+   
+    height:15vh;
+  
+  
+  }
+  
+  .navbar input[type="radio"]{
+    display: none;
+  }
+  .navbar label{
+    padding: 25px;
+    font-weight: bold;
+    color: black;
+    float: right;
+    text-align: right;
+    
+  }
+  
+  .navbar label:hover{
+    background: white;
+    color: black;
+    border-top:5px solid green;
+  }
+  
+  
+  .navbar .tab{
+    width: 100%;
+    padding:20px;
+    order: 1;
+    display: none;
+   background-color: white;
+  
+  
+  }
+  
+  .navbar input[type="radio"]:checked + label + .tab{
+    display: block;
+  }
+  
+  .navbar #tabhome:checked + label {
+    background: white;
+    color: black;
+    border-top:5px solid green;
+  }
+  
+  .navbar #tabservices:checked + label {
+    background: white;
+    color: black;
+    border-top:5px solid green;
+  }
+  
+  .navbar #tabgallery:checked + label {
+    background: white;
+    color: black;
+    border-top:5px solid green;
+  }
+  
+  .navbar #tabblog:checked + label {
+    background: white;
+    color: black;
+    border-top:5px solid green;
+  }
+  .navbar #tababout:checked + label {
+    background: white;
+    color: black;
+    border-top:5px solid green;
+  }
+  .navbar #tabhome:checked + label {
+    background: white;
+    color: black;
+    border-top:5px solid green;
+  }
+  
+  .navbar #tabcontact:checked + label {
+    background: white;
+    color: black;
+    border-top:5px solid green;
+  }
+  
+  .navbar #tabregister:checked + label {
+    background: white;
+    color: black;
+    border-top:5px solid green;
+  }
+  
+  .navbar #tabregister:checked + label  i{
+    color: rgb(66, 66, 216);
+  }
+  
+  .navbar #tablogin:checked + label {
+    background: white;
+    color: black;
+    border-top:5px solid green;
+  }
+  
+  P{
+    color: black;
+  
+  }
+  
+  h2{
+    color: black;
+  }
+  
+  
+  
+  
+  
+  
