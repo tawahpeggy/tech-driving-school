@@ -75,7 +75,8 @@
         font-weight: bold;
         box-shadow: 2px 2px 2px 2px rgb(205, 200, 200);
         width: 22.5vw;
-        font-size: 10px;    }
+        font-size: 10px;
+    }
 
     .bt {
         border: none;
@@ -115,13 +116,13 @@
         display: flex;
         flex-direction: column;
     }
+
     .logo-image {
         border-radius: 50%;
         box-shadow: 2px 2px 2px yellow;
         justify-content: center;
-        margin: 0,auto
+        margin: 0, auto
     }
-
 </style>
 @section('content')
 
@@ -130,8 +131,8 @@
             <div class="item2">
                 <main>
                     <div class="box1">
-                        <br/> <br/>
-                        <h3 class="text-center fw-bold">{{ __('Register') }}</h3><br/>
+                        <br /> <br />
+                        <h3 class="text-center fw-bold">{{ __('Register') }}</h3><br />
                         {{-- <img class="logo-image" src="{{ asset('images/logoImage.jpg') }}" alt="driving school logo" width="40%"> --}}
                         {{-- <img src="{{ asset('images/image_reg.jpeg') }}" alt="driving school image" width="50%"><br/> --}}
                     </div>
