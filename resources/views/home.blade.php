@@ -96,16 +96,14 @@
                         </div>
 
                         <input type="radio" id="tabgallery" name="mytabs" checked="checked">
-                        <label for="tabgallery">Gallery</label>
+                        <label for="tabgallery">upload documents</label>
                         <div class="tab">
-                            <h2>Gallery</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                <br>
-                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                laboris <br>
-                                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                velit <br>
-                                esse cillum dolore eu fugiat nulla pariatur. </p>
+                            <label for="idcard">Id card</label>
+                            <input type="file" id="idcard" name="idcard"> <br><br>
+                            <label for="passportpic">Passport Size Photograph</label>
+                            <input type="file" id="passportpic" name="passportpic">
+
+
 
                         </div>
 
