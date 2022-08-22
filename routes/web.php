@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\COntrollers\AdminController;
 use App\Http\Controller\UserController;
+use App\Http\Controllers\Application;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,8 @@ Route::group(['prefix'=>'user' ,'middleware'=>['isUser','auth']],function(){
     Route::get('profile',[UserController::class,'profile'])->name('user.profile');
     Route::get('settings',[UserController::class,'settings'])->name('user.settings');
 });
+Route::get('application',[Application::class,'index'])->name('user.application');
+Route::post('apply',[Application::class,'apply'])->name('user.apply');
 
 Auth::routes();
 
