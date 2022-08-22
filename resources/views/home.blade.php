@@ -8,8 +8,7 @@
         margin: 50px auto;
         float: right;
         background-image: linear-gradient(to right, #ffff00, #b3b300, #cccc00, #ffff33, #ffff4d);
-
-        height: 15vh;
+         height: 15vh;
     }
 
     .tabs-nav input[type="radio"] {
@@ -22,8 +21,7 @@
         color: black;
         float: right;
         text-align: right;
-
-    }
+      }
 
     .tabs-nav .label:hover {
         background: white;
@@ -43,12 +41,59 @@
         display: block;
     }
 
-    .tabs-nav input[type="radio"]:checked+label {}
+    .tabs-nav #tabhome:checked + label {
+    background: white;
+    color: black;
+    border-top:5px solid green;
+  }
 
-    P {
+  .tabs-nav #tabservices:checked + label {
+    background: white;
+    color: black;
+    border-top:5px solid green;
+  }
+
+  .tabs-nav #tabgallery:checked + label {
+    background: white;
+    color: black;
+    border-top:5px solid green;
+  }
+
+  .tabs-nav #tabblog:checked + label {
+    background: white;
+    color: black;
+    border-top:5px solid green;
+  }
+  .tabs-nav #tababout:checked + label {
+    background: white;
+    color: black;
+    border-top:5px solid green;
+  }
+  .tabs-nav #tabhome:checked + label {
+    background: white;
+    color: black;
+    border-top:5px solid green;
+  }
+
+  .tabs-nav #tabcontact:checked + label {
+    background: white;
+    color: black;
+    border-top:5px solid green;
+  }
+
+  .tabs-nav #tabregister:checked + label {
+    background: white;
+    color: black;
+    border-top:5px solid green;
+  }
+  .tabs-nav #tablogin:checked + label {
+    background: white;
+    color: black;
+    border-top:5px solid green;
+  }
+  P {
         color: black;
-
-    }
+      }
 
     h2 {
         color: black;
@@ -56,7 +101,12 @@
 </style>
 {{-- tabs css end --}}
 @section('content')
-    <div class="container-fluid">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard') }}</div>
+              <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-10">
                 {{-- tabs --}}
@@ -64,7 +114,7 @@
                     <div class="navbar tabs-nav">
 
                         <input type="radio" id="tabhome" name="mytabs" checked="checked">
-                        <label for="tabhome">Home</label>
+                        <label for="tabhome"><i class="fa fa-home fa-1x"></i>Home</label>
                         <div class="tab">
                             <h2>Home</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -74,12 +124,11 @@
                                 nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
                                 velit <br>
                                 esse cillum dolore eu fugiat nulla pariatur. </p>
-
                         </div>
 
 
                         <input type="radio" id="tabservices" name="mytabs" checked="checked">
-                        <label for="tabservices" class="label">Personal information</label>
+                        <label for="tabservices" class="label"><i class="fa fa-home fa-1x"></i>Personal information</label>
                         <div class="tab">
                             <h2>Personal Informaion</h2>
                             <label for="firstName">First Name</label> <input type="text" placeholder="First Name" id="firstName"><br> <br>
@@ -97,6 +146,7 @@
 
                         <input type="radio" id="tabgallery" name="mytabs" checked="checked">
                         <label for="tabgallery">upload documents</label>
+                        <label for="tabgallery"><i class="fa-thin fa-picture-o fa-1x"></i>Gallery</label>
                         <div class="tab">
                             <label for="idcard">Id card</label>
                             <input type="file" id="idcard" name="idcard"> <br><br>
@@ -108,7 +158,7 @@
                         </div>
 
                         <input type="radio" id="tabblog" name="mytabs" checked="checked">
-                        <label for="tabblog">Blog</label>
+                        <label for="tabblog"><i class="fa-thin fa-blog fa-1x"></i>Blog</label>
                         <div class="tab">
                             <h2>Blog</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -122,7 +172,7 @@
                         </div>
 
                         <input type="radio" id="tababout" name="mytabs" checked="checked">
-                        <label for="tababout">About</label>
+                        <label for="tababout"><i class="fa-thin fa-file fa-1x"></i>About</label>
                         <div class="tab">
                             <h2>About</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -136,7 +186,7 @@
                         </div>
 
                         <input type="radio" id="tabcontact" name="mytabs" checked="checked">
-                        <label for="tabcontact">Contact</label>
+                        <label for="tabcontact"><i class="fa-thin fa-address-book fa-1x"></i>Contact</label>
                         <div class="tab">
                             <h2>Contact</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -151,7 +201,7 @@
 
                         <!----------------------------REGISTRATION PAGE----------------------------------------------------------->
                         <input type="radio" id="tabregister" name="mytabs" checked="checked">
-                        <label for="tabregister">Registration</label>
+                        <label for="tabregister"><i class="fa-thin fa-user fa-1x" ></i>Registration</label>
                         <div class="tab">
                             <h2>Register</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
@@ -168,7 +218,7 @@
 
 
                         <input type="radio" id="tablogin" name="mytabs" checked="checked">
-                        <label for="tablogin">Log in</label>
+                        <label for="tablogin"><i class="fa fa-sign-in fa-1x"></i>Log in</label>
                         <div class="tab">
                             <h2>Log In</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
