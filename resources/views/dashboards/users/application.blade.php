@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8 mx-auto my-5 rounded bg-w">
             <div class="p-2 ">
-                <form action="{{route('user.apply')}}" method="post">
+                <form action="{{route('user.apply')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="py-4">
                         <nav>
@@ -65,28 +65,28 @@
                                             <div class="tab-pane fade show active" id="id-front" role="tabpanel" aria-labelledby="id-front-tab" tabindex="0">
                                                 <div class="row py-2">
                                                     <div class="col-sm-4 text-end text-capitalize">upload image:</div>
-                                                    <div class="col-sm-8 text-end text-capitalize"><input type="file" name="id_front" id="" class="form-control border-0 border-bottom border-dark rounded-0 bg-white preview" required></div>
-                                                </div>
-                                                <div class="col-9 mx-auto image-preview">
-                                                    <img src="" alt="" class="w-100 h-auto my-2">
+                                                    <div class="col-sm-8 text-end text-capitalize"><input type="file" accept="image/*" onchange="preview(this)" name="id_front" id="" class="form-control border-0 border-bottom border-dark rounded-0 bg-white preview" required></div>
+                                                    <div class="col-9 mx-auto image-preview">
+                                                        <img src="" alt="" class="w-100 h-auto my-2">
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade" id="id-back" role="tabpanel" aria-labelledby="id-back-tab" tabindex="0">
                                                 <div class="row py-2">
                                                     <div class="col-sm-4 text-end text-capitalize">upload image:</div>
-                                                    <div class="col-sm-8 text-end text-capitalize"><input type="file" name="id_back" id="" class="form-control border-0 border-bottom border-dark rounded-0 bg-white preview" required></div>
-                                                </div>
-                                                <div class="col-9 mx-auto image-preview">
-                                                    <img src="" alt="" class="w-100 h-auto my-2">
+                                                    <div class="col-sm-8 text-end text-capitalize"><input type="file" accept="image/*" onchange="preview(this)" name="id_back" id="" class="form-control border-0 border-bottom border-dark rounded-0 bg-white preview" required></div>
+                                                    <div class="col-9 mx-auto image-preview">
+                                                        <img src="" alt="" class="w-100 h-auto my-2">
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade" id="photo" role="tabpanel" aria-labelledby="photo-tab" tabindex="0">
                                                 <div class="row py-2">
                                                     <div class="col-sm-4 text-end text-capitalize">upload image:</div>
-                                                    <div class="col-sm-8 text-end text-capitalize"><input type="file" name="passport_photo" id="" class="form-control border-0 border-bottom border-dark rounded-0 bg-white preview" required></div>
-                                                </div>
-                                                <div class="col-9 mx-auto image-preview">
-                                                    <img src="" alt="" class="w-100 h-auto my-2">
+                                                    <div class="col-sm-8 text-end text-capitalize"><input type="file" accept="image/*" onchange="preview(this)" name="passport_photo" id="" class="form-control border-0 border-bottom border-dark rounded-0 bg-white preview" required></div>
+                                                    <div class="col-9 mx-auto image-preview">
+                                                        <img src="" alt="" class="w-100 h-auto my-2">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -111,9 +111,9 @@
                                     <div class="col-sm-4 text-end text-capitalize">mode:</div>
                                     <div class="col-sm-8 text-end text-capitalize"><select name="mode" id="" class="form-control border-0 border-bottom border-dark rounded-0 bg-white " required>
                                         <option value="" selected>select mode</option>
-                                        <option value="SF" selected>Super Fast Mode</option>
-                                        <option value="F" selected>Fast Mode</option>
-                                        <option value="N" selected>Normal Mode</option>
+                                        <option value="1">Super Fast Mode</option>
+                                        <option value="2">Fast Mode</option>
+                                        <option value="3">Normal Mode</option>
                                     </select></div>
                                 </div>
                             </div>
@@ -126,14 +126,14 @@
                                     <div class="col-sm-4 text-end text-capitalize">session:</div>
                                     <div class="col-sm-8 text-end text-capitalize"><select name="session" id="" class="form-control border-0 border-bottom border-dark rounded-0 bg-white " required>
                                         <option value="" selected>select session</option>
-                                        <option value="NOV-JAN">NOVEMBER-JANUARY</option>
-                                        <option value="JAN-MAR">JANUARY-MARCH</option>
-                                        <option value="FAB-APR">FRBRUARY-APRIL</option>
-                                        <option value="APR-JUN">APRIL-JUNE</option>
-                                        <option value="MAY-JUL">MAY-JULY</option>
-                                        <option value="JUL-SEP">JULY-SEPTEMBER</option>
-                                        <option value="AUG-OCT">AUGUST-OCTOBER</option>
-                                        <option value="OCT-DEC">OCTOBER-DECEMBER</option>
+                                        <option value="1">NOVEMBER-JANUARY</option>
+                                        <option value="2">JANUARY-MARCH</option>
+                                        <option value="3">FRBRUARY-APRIL</option>
+                                        <option value="4">APRIL-JUNE</option>
+                                        <option value="5">MAY-JULY</option>
+                                        <option value="6">JULY-SEPTEMBER</option>
+                                        <option value="7">AUGUST-OCTOBER</option>
+                                        <option value="8">OCTOBER-DECEMBER</option>
                                     </select></div>
                                 </div>
                             </div>
@@ -150,13 +150,10 @@
 @endsection
 @section('script')
 <script>
-    document.querySelectorAll('.preview').forEach(function(value, key, parent){
-        value.addEventListener('change', function(evt){
-            preview(value);
-        });
-    });
+    
     function preview(element) {
-        alert(value.parent.style.class)
+        console.log(element.files[0]);
+        element.parentElement.nextElementSibling.querySelector('img').src = URL.createObjectURL(element.files[0]);
     }
 </script>
 @endsection

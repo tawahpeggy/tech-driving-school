@@ -18,6 +18,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    <link href="{{ asset('fa5/css/all.min.css') }}" rel="stylesheet">
+    
 </head>
 <body>
     <table id="app" class="">
@@ -77,6 +79,11 @@
             </nav>
         </tr>
         <tr class="bg-dark">
+            @guest
+            <div class="w-100 row h-100">
+                @yield('content')
+            </div>
+            @else
             <div class="w-100 row h-100">
                 <div class="col-12 col-md-3 h-100 pt-5 bg-y">
                     <div class="container">
@@ -86,34 +93,54 @@
                         </button>
                         <div id="collapsibleNavId">
                             <div class="w-100 text-center">
-                                <span class="fas fa-layer-group fs-1 t-b fw-bolder">TDS</span>
+                                <span class="fas fa-layer-group fs-1 t-b fw-bolder"></span> 
                             </div>
-                            <menu class=" me-auto mt-2 mt-lg-0 t-b h5">
-                                <div class="nav-item py-2 active">
-                                    <a class="nav-link" href="{{route('user.dashboard')}}">Dashboard</a>
+                            <div class=" mx-auto mt-5 py-4 mt-lg-0 t-b h5">
+                                <div class="nav-item py-2 bb-b active">
+                                    <a class="nav-link" href="{{route('home')}}">Dashboard</a>
                                 </div>
-                                <div class="nav-item py-2">
+                                <div class="nav-item py-2 bb-b">
                                     <a class="nav-link" href="{{route('user.application')}}">Apply</a>
                                 </div>
-                                <div class="nav-item py-2">
+                                <div class="nav-item py-2 bb-b">
+                                    <a class="nav-link" href="{{route('user.application')}}">Payments</a>
+                                </div>
+                                @if(count(\DB::table('applications')->where('user_id', '=', auth()->user()->id)->get()) > 0)
+                                <div class="nav-item py-2 bb-b">
+                                    <a class="nav-link" href="{{route('user.application')}}">Time table</a>
+                                </div>
+                                @endif
+                                <div class="nav-item py-2 bb-b">
                                     <a class="nav-link" href="{{route('user.settings')}}">Settings</a>
                                 </div>
-                                <div class="nav-item py-2">
+                                <div class="nav-item py-2 bb-b">
                                     <a class="nav-link" href="{{route('user.profile')}}">Profile</a>
                                 </div>
-                                <div class="nav-item py-2">
+                                <div class="nav-item py-2 bb-b">
                                     <a class="nav-link" href="#">Info</a>
                                 </div>
                                 
-                            </menu>
+                            </div>
                         </div>
                     </div>
                     
                 </div>
                 <div class="col-12 col-md-9">
+                    <div class="w-100 text-center py-3">
+                        @if(session('error'))
+                        <span class="fs-4 text-danger">{{session('error')}}</span>
+                        @endif
+                        @if(session('success'))
+                        <span class="fs-4 text-success">{{session('success')}}</span>
+                        @endif
+                        @if(session('message'))
+                        <span class="fs-4 text-primary">{{session('message')}}</span>
+                        @endif
+                    </div>
                     @yield('content')
                 </div>
             </div>
+            @endguest
         </tr>
     </table>
     @yield('script')
