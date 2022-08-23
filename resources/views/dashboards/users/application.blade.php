@@ -97,15 +97,15 @@
                                 <div class="fs-3 text-uppercase text-center t-b py-5">OPERATING MODE</div>
                                 <div class="row py-2">
                                     <div class="col-sm-4 text-end text-capitalize">super fast mode:</div>
-                                    <div class="col-sm-8 text-start text-capitalize fw-bold">FCFA 150,000</div>
+                                    <div class="col-sm-8 text-start text-capitalize fw-bold">FCFA 200,000</div>
                                 </div>
                                 <div class="row py-2">
                                     <div class="col-sm-4 text-end text-capitalize">fast mode:</div>
-                                    <div class="col-sm-8 text-start text-capitalize fw-bold">FCFA 130,000</div>
+                                    <div class="col-sm-8 text-start text-capitalize fw-bold">FCFA 150,000</div>
                                 </div>
                                 <div class="row py-2">
                                     <div class="col-sm-4 text-end text-capitalize">normal mode:</div>
-                                    <div class="col-sm-8 text-start text-capitalize fw-bold">FCFA 120,000</div>
+                                    <div class="col-sm-8 text-start text-capitalize fw-bold">FCFA 100,000</div>
                                 </div>
                                 <div class="row py-2 border-top my-4">
                                     <div class="col-sm-4 text-end text-capitalize">mode:</div>
@@ -150,7 +150,7 @@
 @endsection
 @section('script')
 <script>
-    
+
     function preview(element) {
         console.log(element.files[0]);
         element.parentElement.nextElementSibling.querySelector('img').src = URL.createObjectURL(element.files[0]);
