@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<<<<<<< HEAD
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +11,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/home.css') }}" rel="stylesheet">
-      
+
 
 
         <!-- Styles -->
@@ -173,8 +172,7 @@ h2 {
   width: 100%;
   text-align: center;
 }
-=======
->>>>>>> 014d93c51281414b1a995ae4198b5dd34949a8fd
+</style>
 
 <head>
     <meta charset="utf-8">
