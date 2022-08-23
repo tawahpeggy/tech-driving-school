@@ -35,14 +35,14 @@ Route::group(['prefix'=>'user' ,'middleware'=>['isUser','auth']],function(){
     Route::get('dashboard',[UserController::class,'index'])->name('user.dashboard');
     Route::get('profile',[UserController::class,'profile'])->name('user.profile');
     Route::get('settings',[UserController::class,'settings'])->name('user.settings');
+    Route::get('application',[Application::class,'index'])->name('user.application');
+    Route::post('apply',[Application::class,'apply'])->name('user.apply');
 });
-Route::get('application',[Application::class,'index'])->name('user.application');
-Route::post('apply',[Application::class,'apply'])->name('user.apply');
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
