@@ -101,5 +101,32 @@
 </style>
 {{-- tabs css end --}}
 @section('content')
-
+<div class="w-100py-5">
+  <div class="text-center mt-4 py-4 fs-3 fw-bold text-capitalize t-b">
+    @if(auth()->user()->role == 1)
+      Admin Dashboard
+    @endif
+    @if(auth()->user()->role == 2)
+      User Dashboard
+    @endif
+  </div>
+  <div class="col-sm-9 mx-auto my-5 p-3 bg-w rounded">
+    <div class="d-flex justify-content-center mb-4">
+      <i class="fas fa-user t-b  " style="font-size: 8rem;"></i>
+    </div>
+    <div class="">
+      <div class="row py-3">
+        <div class="col-sm-4 text-end text-capitalize">name:</div>
+        <div class="col-sm-8 text-start fw-bold text-uppercase">{{auth()->user()->name}}</div>
+      </div>
+      <div class="row py-3">
+        <div class="col-sm-4 text-end text-capitalize">email:</div>
+        <div class="col-sm-8 text-start fw-bold text-uppercase">{{auth()->user()->email}}</div>
+      </div>
+      <div class="row py-3">
+        <div class="col-sm-8 text-center mx-auto fw-bold text-uppercase">GENDER</div>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
