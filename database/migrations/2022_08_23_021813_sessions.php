@@ -13,15 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        //
+        Schema::create('sessions', function(Blueprint $table){
+            $table->engine='InnoDB';
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->tinyInteger('role')->default(2);
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->date('start');
+            $table->date('end');
         });
     }
 
@@ -32,6 +29,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        //
+        Schema::dropIfExists('sessions');
     }
 };
