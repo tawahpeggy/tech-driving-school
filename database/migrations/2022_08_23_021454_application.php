@@ -30,6 +30,7 @@ return new class extends Migration
             $table->unsignedBigInteger('mode');
             $table->unsignedBigInteger('session');
             $table->unsignedBigInteger('user_id');
+            $table->enum('status', ['PENDING', 'REJECTED', 'ACCEPTED'])->default('PENDING');
         });
     }
 

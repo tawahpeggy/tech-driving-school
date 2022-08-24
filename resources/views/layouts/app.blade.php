@@ -22,8 +22,8 @@
     
 </head>
 <body>
-    <table id="app" class="">
-        <tr class="">
+    <div id="app" class="">
+        <div class="">
             <nav class="navbar navbar-expand-md navbar-light bg-white bb-y">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}">
@@ -77,15 +77,15 @@
                     </div>
                 </div>
             </nav>
-        </tr>
-        <tr class="bg-dark">
+        </div>
+        <div class="">
             @guest
             <div class="w-100 row h-100">
                 @yield('content')
             </div>
             @else
             <div class="w-100 row h-100">
-                <div class="col-12 col-md-3 h-100 pt-5 bg-y">
+                <div class=" col-md-3 h-100 pt-5 bg-y">
                     <div class="container">
                         <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -99,33 +99,65 @@
                                 <div class="nav-item py-2 bb-b active">
                                     <a class="nav-link" href="{{route('home')}}">Dashboard</a>
                                 </div>
-                                <div class="nav-item py-2 bb-b">
-                                    <a class="nav-link" href="{{route('user.application')}}">Apply</a>
-                                </div>
-                                <div class="nav-item py-2 bb-b">
-                                    <a class="nav-link" href="{{route('user.application')}}">Payments</a>
-                                </div>
-                                @if(count(\DB::table('applications')->where('user_id', '=', auth()->user()->id)->get()) > 0)
-                                <div class="nav-item py-2 bb-b">
-                                    <a class="nav-link" href="{{route('user.application')}}">Time table</a>
-                                </div>
+                                @if(auth()->user()->role == 1)
+                                    <div class="nav-item py-2 bb-b">
+                                        <a class="nav-link" href="{{route('admin.students')}}">Students</a>
+                                    </div>
+                                    <div class="nav-item py-2 bb-b">
+                                        <a class="nav-link" href="{{route('admin.applications')}}">Applications</a>
+                                    </div>
+                                    <div class="nav-item py-2 bb-b">
+                                        <a class="nav-link" href="{{route('admin.payments')}}">Payments</a>
+                                    </div>
+                                    <div class="nav-item py-2 bb-b">
+                                        <a class="nav-link" href="{{route('admin.sessions')}}">Sessions</a>
+                                    </div>
+                                    <div class="nav-item py-2 bb-b">
+                                        <a class="nav-link" href="{{route('admin.modes')}}">Modes</a>
+                                    </div>
+                                    <div class="nav-item py-2 bb-b">
+                                        <a class="nav-link" href="{{route('admin.schedules')}}">Schedules</a>
+                                    </div>
+                                    <div class="nav-item py-2 bb-b">
+                                        <a class="nav-link" href="{{route('admin.profile')}}">Profile</a>
+                                    </div>
+                                    <div class="nav-item py-2 bb-b">
+                                        <a class="nav-link" href="{{route('admin.settings')}}">Settings</a>
+                                    </div>
+                                    <div class="nav-item py-2 bb-b">
+                                        <a class="nav-link" href="{{route('admin.info')}}">Info</a>
+                                    </div>
+
                                 @endif
-                                <div class="nav-item py-2 bb-b">
-                                    <a class="nav-link" href="{{route('user.settings')}}">Settings</a>
-                                </div>
-                                <div class="nav-item py-2 bb-b">
-                                    <a class="nav-link" href="{{route('user.profile')}}">Profile</a>
-                                </div>
-                                <div class="nav-item py-2 bb-b">
-                                    <a class="nav-link" href="#">Info</a>
-                                </div>
+                                @if(auth()->user()->role == 2)
                                 
+                                    <div class="nav-item py-2 bb-b">
+                                        <a class="nav-link" href="{{route('user.application')}}">Apply</a>
+                                    </div>
+                                    @if(count(\DB::table('applications')->where('user_id', '=', auth()->user()->id)->get()) > 0)
+                                    <div class="nav-item py-2 bb-b">
+                                        <a class="nav-link" href="{{route('user.application')}}">Payments</a>
+                                    </div>
+                                    <div class="nav-item py-2 bb-b">
+                                        <a class="nav-link" href="{{route('user.time_table')}}">Time table</a>
+                                    </div>
+                                    @endif
+                                    <div class="nav-item py-2 bb-b">
+                                        <a class="nav-link" href="{{route('user.settings')}}">Settings</a>
+                                    </div>
+                                    <div class="nav-item py-2 bb-b">
+                                        <a class="nav-link" href="{{route('user.profile')}}">Profile</a>
+                                    </div>
+                                    <div class="nav-item py-2 bb-b">
+                                        <a class="nav-link" href="#">Info</a>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
                     
                 </div>
-                <div class="col-12 col-md-9">
+                <div class=" col-md-9 h-100">
                     <div class="w-100 text-center py-3">
                         @if(session('error'))
                         <span class="fs-4 text-danger">{{session('error')}}</span>
@@ -141,8 +173,8 @@
                 </div>
             </div>
             @endguest
-        </tr>
-    </table>
+        </div>
+    </div>
     @yield('script')
 </body>
 </html>

@@ -14,6 +14,16 @@ return new class extends Migration
     public function up()
     {
         //
+        // Schema::dropIfExists('time_tables');
+        Schema::create('time_tables', function(Blueprint $table){
+            $table->engine='InnoDB';
+            $table->id();
+            $table->unsignedBigInteger('session_id');
+            $table->string('activity');
+            $table->time('start_time');
+            $table->time('end_time');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -24,5 +34,6 @@ return new class extends Migration
     public function down()
     {
         //
+        Schema::dropIfExists('time_tables');
     }
 };

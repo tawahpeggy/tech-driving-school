@@ -20,5 +20,11 @@ class UserController extends Controller
         return view('dashboards.users.settings');
 
     }
+    public function time_table()
+    {
+        # code...
+        $all = \App\Models\TimeTable::all();
+        return view('dashboards.users.time_table');
+    }
 
 }
