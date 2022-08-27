@@ -32,14 +32,22 @@ Route::group(['prefix'=>'admin' ,'middleware'=>['isAdmin','auth']],function(){
     Route::get('settings',[AdminController::class,'settings'])->name('admin.settings');
     Route::get('students',[AdminController::class,'students'])->name('admin.students');
     Route::get('applications',[AdminController::class,'applications'])->name('admin.applications');
+    Route::get('applications/accept/{id}',[AdminController::class,'accept_application'])->name('admin.accept_application');
+    Route::get('applications/reject/{id}',[AdminController::class,'reject_application'])->name('admin.reject_application');
     Route::get('schedules',[AdminController::class,'schedules'])->name('admin.schedules');
+    Route::get('schedule/{id}',[AdminController::class,'getSchedule'])->name('admin.schedule');
+    Route::post('schedules',[AdminController::class,'save_schedule']);
     Route::get('payments',[AdminController::class,'payments'])->name('admin.payments');
     Route::get('sessions',[AdminController::class,'sessions'])->name('admin.sessions');
+    Route::post('sessions',[AdminController::class,'store_session']);
+    Route::get('sessions/{id}',[AdminController::class,'delete_session'])->name('admin.delete_session');
     Route::get('modes',[AdminController::class,'modes'])->name('admin.modes');
-    Route::post('modes',[AdminController::class,'store']);
-    Route::put('modes',[AdminController::class,'store']);
+    Route::get('modes/{id}',[AdminController::class,'delete_mode'])->name('admin.delete_mode');
+    Route::post('modes',[AdminController::class,'store_mode']);
+    Route::put('modes',[AdminController::class,'update_mode']);
     Route::get('info',[AdminController::class,'payments'])->name('admin.info');
 });
+
 Route::group(['prefix'=>'user' ,'middleware'=>['isUser','auth']],function(){
     Route::get('dashboard',[UserController::class,'index'])->name('user.dashboard');
     Route::get('profile',[UserController::class,'profile'])->name('user.profile');
@@ -49,11 +57,3 @@ Route::group(['prefix'=>'user' ,'middleware'=>['isUser','auth']],function(){
     Route::get('application',[Application::class,'index'])->name('user.application');
     Route::post('apply',[Application::class,'apply'])->name('user.apply');
 });
-
-// Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-// Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

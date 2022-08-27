@@ -1,7 +1,7 @@
 *{
     --color-white: #fff;
-    --color-yellow: rgb(255, 230, 0);
-    --color-black: #001;
+    --color-yellow: rgb(5, 0, 29);
+    --color-black: rgb(118, 118, 248);
 }
 .t-w{
     color: var(--color-white);

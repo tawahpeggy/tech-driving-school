@@ -15,13 +15,13 @@
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active py-3" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
                 @if(!isset($data) || count($data) ==null)
-                    <div class="my-5 text-center t-b fs-3">No modes available</div>
+                    <div class="my-5 text-center t-b fs-3">No sessions available</div>
                 @else
                     <table class="table">
                         <thead class="bg-secondary t-b">
                             <th>#</th>
-                            <th>NAME</th>
-                            <th>PRICE</th>
+                            <th>START DATE</th>
+                            <th>END DATE</th>
                             <th></th>
                         </thead>
                         <tbody>
@@ -29,11 +29,12 @@
                             @foreach($data as $item)
                                 <tr>
                                     <td>{{$cnt}}</td>
-                                    <td>{{$item->name}}</td>
-                                    <td>{{$item->price}}</td>
+                                    <td>{{date('l dS M Y', strtotime($item->start))}}</td>
+                                    <td>{{date('l dS M Y', strtotime($item->end))}}</td>
                                     <td>
-                                        <a onclick="edit('{{$item->id}}')" class="btn bt-sm btn-default t-y text-sm py-1" title="edit mode"><i class="fas fa-edit "></i></a>
-                                        <a href="{{route('admin.delete_mode', $item->id)}}" class="btn btn-sm btn-default t-y text-sm" title="delete mode"><i class="fas fa-trash-alt "></i></a>
+                                        <a onclick="edit('{{$item->id}}')" class="btn bt-sm btn-default t-y text-sm py-1" title="edit session"><i class="fas fa-edit "></i></a>
+                                        <a onclick="edit('{{$item->id}}')" class="btn bt-sm btn-default t-y text-sm py-1" title="session details"><i class="fas fa-expand-arrows-alt    "></i></a>
+                                        <a href="{{route('admin.delete_session', $item->id)}}" class="btn btn-sm btn-default t-y text-sm" title="delete session"><i class="fas fa-trash-alt "></i></a>
                                     </td>
                                 </tr>
                                 @php($cnt++)
@@ -44,16 +45,16 @@
                 </div>
 
                 <div class="tab-pane fade py-3" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-                    <div class="fs-3 text-uppercase text-center t-b py-5">NEW MODE</div>
-                    <form action="{{route('admin.modes')}}" method="post" class="col-9 mx-auto">
+                    <div class="fs-3 text-uppercase text-center t-b py-5">NEW SESSION</div>
+                    <form action="{{route('admin.sessions')}}" method="post" class="col-9 mx-auto">
                         @csrf
                         <div class="row py-2">
-                            <div class="col-sm-3 text-end text-capitalize">name:</div>
-                            <div class="col-sm-8 text-end text-capitalize"><input type="text" name="name" id="" class="form-control border-0 border-bottom border-dark rounded-0" required placeholder="name"></div>
+                            <div class="col-sm-3 text-end text-capitalize">start date:</div>
+                            <div class="col-sm-8 text-end text-capitalize"><input type="date" name="start" id="" class="form-control border-0 border-bottom border-dark rounded-0" required placeholder="start date"></div>
                         </div>
                         <div class="row py-2">
-                            <div class="col-sm-3 text-end text-capitalize">price:</div>
-                            <div class="col-sm-8 text-end text-capitalize"><input type="number" name="price" id="" class="form-control border-0 border-bottom border-dark rounded-0" required placeholder="price"></div>
+                            <div class="col-sm-3 text-end text-capitalize">end date:</div>
+                            <div class="col-sm-8 text-end text-capitalize"><input type="date" name="end" id="" class="form-control border-0 border-bottom border-dark rounded-0" required placeholder="end date"></div>
                         </div>
                         <div class="col-11 d-flex justify-content-end py-2">
                             <input type="submit" name="submit" value="submit" id="" class="btn btn-default border-dark text-capitalize"></div>
@@ -63,7 +64,7 @@
 
                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
                     
-                    <div class="fs-3 text-uppercase text-center t-b py-5">UPDATE MODE</div>
+                    <div class="fs-3 text-uppercase text-center t-b py-5">UPDATE SESSION</div>
                 </div>
                 
             </div>
