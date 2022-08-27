@@ -40,13 +40,13 @@ class Application extends Controller
         try {
             // rename and save images
             $id_front_filename =  time().'_'.Random::generate(10).'.'.$request->file('id_front')->getClientOriginalExtension();
-            $request->file('id_front')->storeAs('uploads/images/id/front', $id_front_filename);
+            $request->file('id_front')->storeAs('public/uploads/images/id/front', $id_front_filename);
             
             $id_back_filename =  time().'_'.Random::generate(10).'.'.$request->file('id_back')->getClientOriginalExtension();
-            $request->file('id_back')->storeAs('uploads/images/id/back', $id_back_filename);
+            $request->file('id_back')->storeAs('public/uploads/images/id/back', $id_back_filename);
             
             $passport_photo_filename =  time().'_'.Random::generate(10).'.'.$request->file('passport_photo')->getClientOriginalExtension();
-            $request->file('passport_photo')->storeAs('uploads/images/passport', $passport_photo_filename);
+            $request->file('passport_photo')->storeAs('public/uploads/images/passport', $passport_photo_filename);
             
             
             $application_instance = new \App\Models\Application();

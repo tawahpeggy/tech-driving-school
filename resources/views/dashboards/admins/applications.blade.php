@@ -35,7 +35,7 @@
                                     <td>{{\App\Models\Mode::find($item->mode)->name ?? '-----'}}</td>
                                     <td>{{'From '.\App\Models\Sessionz::find($item->session)->start ?? null.' to '.\App\Models\Sessionz::find($item->session)->end ?? '-----'}}</td>
                                     <td class="bg-y">
-                                        <a onclick="details('{{$item->id}}')" class="btn bt-sm  t-b text-sm py-1" title="more"><i class="fas fa-eye "></i></a>
+                                        <a href="#nav-profile" onclick="details('{{$item->id}}')" class="btn bt-sm  t-b text-sm py-1" title="more"><i class="fas fa-eye "></i></a>
                                         <a href="{{route('admin.accept_application', $item->id)}}" class="btn bt-sm  t-b text-sm py-1" title="accept"><i class="fas fa-check    "></i></a>
                                         <a href="{{route('admin.reject_application', $item->id)}}" class="btn btn-sm btn-default t-b text-sm" title="reject"><i class="fas fa-trash-alt "></i></a>
                                     </td>
@@ -49,26 +49,76 @@
                 </div>
 
                 <div class="tab-pane fade py-3" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-                    <div class="fs-3 text-uppercase text-center t-b py-5">NEW SESSION</div>
-                    <form action="{{route('admin.sessions')}}" method="post" class="col-9 mx-auto">
-                        @csrf
-                        <div class="row py-2">
-                            <div class="col-sm-3 text-end text-capitalize">start date:</div>
-                            <div class="col-sm-8 text-end text-capitalize"><input type="date" name="start" id="" class="form-control border-0 border-bottom border-dark rounded-0" required placeholder="start date"></div>
+                    <div class="d-flex flex-wrap justify-content-center">
+                        <div class="card m-1 col-sm-4 col-md-3 border-0 bg-transparent">
+                            <div class="card-img-top embed-responsive embed-responsive-16by9 flex-auto">
+                                <img src="{{asset('storage/uploads/images/passport/1661236944_8ojnow6naq.jpg')}}" alt="PROFILE PICTURE" class="img img-responsive img-thumbnail">
+                            </div>
+                            <div class="card-title text-center">PROFILE PICTURE</div>
                         </div>
-                        <div class="row py-2">
-                            <div class="col-sm-3 text-end text-capitalize">end date:</div>
-                            <div class="col-sm-8 text-end text-capitalize"><input type="date" name="end" id="" class="form-control border-0 border-bottom border-dark rounded-0" required placeholder="end date"></div>
+                        <div class="card m-1 col-sm-4 col-md-3 border-0 bg-transparent">
+                            <div class="card-img-top embed-responsive embed-responsive-16by9 flex-auto">
+                                <img src="{{asset('storage/uploads/images/passport/1661236944_8ojnow6naq.jpg')}}" alt="NIC FRONT" class="img img-responsive img-thumbnail">
+                            </div>
+                            <div class="card-title text-center">ID-CARD FRONT</div>
                         </div>
-                        <div class="col-11 d-flex justify-content-end py-2">
-                            <input type="submit" name="submit" value="submit" id="" class="btn btn-default border-dark text-capitalize"></div>
+                        <div class="card m-1 col-sm-4 col-md-3 border-0 bg-transparent">
+                            <div class="card-img-top embed-responsive embed-responsive-16by9 flex-auto">
+                                <img src="{{asset('storage/uploads/images/passport/1661236944_8ojnow6naq.jpg')}}" alt="NIC BACK" class="img img-responsive img-thumbnail">
+                            </div>
+                            <div class="card-title text-center">ID-CARD BACK</div>
                         </div>
-                    </form>
-                </div>
-
-                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
-                    
-                    <div class="fs-3 text-uppercase text-center t-b py-5">UPDATE SESSION</div>
+                    </div>
+                    <div class="d-flex flex-wrap justify-content-center">
+                        <div class="card m-1 col-sm-4 col-md-3 border-0 bg-transparent">
+                            <div class="input-group px-1 rounded-0 mt-3">
+                                <span class="input-group-text rounded-0"><small>First name</small></span>
+                                <span class="form-control rounded-0">__fname__</span>
+                            </div>
+                            <div class="input-group px-1 rounded-0 mt-3">
+                                <span class="input-group-text rounded-0"><small>Last name</small></span>
+                                <span class="form-control rounded-0">__lname__</span>
+                            </div>
+                            <div class="input-group px-1 rounded-0 mt-3">
+                                <span class="input-group-text rounded-0"><small>Born on</small></span>
+                                <span class="form-control rounded-0">__dob__</span>
+                            </div>
+                            <div class="input-group px-1 rounded-0 mt-3">
+                                <span class="input-group-text rounded-0"><small>Born at</small></span>
+                                <span class="form-control rounded-0">__pob__</span>
+                            </div>
+                        </div>
+                        <div class="card m-1 col-sm-4 col-md-3 border-0 bg-transparent">
+                            <div class="input-group px-1 rounded-0 mt-3">
+                                <span class="input-group-text rounded-0"><small>NIC No</small></span>
+                                <span class="form-control rounded-0">__cnumber__</span>
+                            </div>
+                            <div class="input-group px-1 rounded-0 mt-3">
+                                <span class="input-group-text rounded-0"><small>Issued on</small></span>
+                                <span class="form-control rounded-0">__cdate__</span>
+                            </div>
+                            <div class="input-group px-1 rounded-0 mt-3">
+                                <span class="input-group-text rounded-0"><small>Issued at</small></span>
+                                <span class="form-control rounded-0">__cpost__</span>
+                            </div>
+                            
+                        </div>
+                        <div class="card m-1 col-sm-4 col-md-3 border-0 bg-transparent">
+                            <div class="input-group px-1 rounded-0 mt-3">
+                                <span class="input-group-text rounded-0"><small>Mode</small></span>
+                                <span class="form-control rounded-0">__mode__</span>
+                            </div>
+                            <div class="input-group px-1 rounded-0 mt-3">
+                                <span class="input-group-text rounded-0"><small>Session</small></span>
+                                <span class="form-control rounded-0">__session__</span>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center border-top">
+                        <a href="" class="rounded-pill px-3 py-1 bg-y t-b mx-3 my-2"><i class="fas fa-edit mx-1   "></i>edit</a>
+                        <a href="" class="rounded-pill px-3 py-1 bg-y t-b mx-3 my-2"><i class="fas fa-trash-alt mx-1   "></i>delete</a>
+                    </div>
                 </div>
                 
             </div>
@@ -78,6 +128,6 @@
 @endsection
 @section('script')
 <script>
-    
+    function details(id)
 </script>
 @endsection
