@@ -13,15 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        //
-        // Schema::dropIfExists('time_tables');
+        
+        Schema::dropIfExists('time_tables');
         Schema::create('time_tables', function(Blueprint $table){
             $table->engine='InnoDB';
             $table->id();
-            $table->unsignedBigInteger('session_id');
-            $table->string('activity');
-            $table->time('start_time');
-            $table->time('end_time');
+            $table->unsignedBigInteger('session_id')->nullable();
+            $table->string('title');
+            $table->json('schedules')->nullable();
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
         });
     }

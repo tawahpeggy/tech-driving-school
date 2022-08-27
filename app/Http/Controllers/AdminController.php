@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
@@ -28,14 +30,43 @@ class AdminController extends Controller
     }
     public function students()
     {
-        $data['data'] = DB::table('applications')->where('status', '=', 'ACCEPTED')
-                ->get();
+        $data['data'] = \App\Models\Application::all();
         return view('dashboards.admins.students', $data);
+    }
+    public function accept_application($id)
+    {
+        try {
+            $instance = \App\Models\Application::find($id);
+            $instance->status = 'accepted';
+            $instance->save();
+            return back()->with('success', "Application Accepted ");
+        } catch (\Throwable $th) {
+            //throw $th;
+            return back()->with('error', 'Failed to accept application');
+        }
+    }
+    public function reject_application($id)
+    {
+        try {
+            $instance = \App\Models\Application::find($id);
+            $instance->status = 'rejected';
+            $instance->save();
+            return back()->with('success', "Application rejected ");
+        } catch (\Throwable $th) {
+            //throw $th;
+            return back()->with('error', 'Failed to reject application');
+        }
     }
     public function schedules()
     {
-        $data['data'] = \App\Models\TimeTable::all();
+        $data['data'] = json_decode(\App\Models\TimeTable::first()->schedules ?? null);
+        // dd($data);
         return view('dashboards.admins.schedules', $data);
+    }
+    public function getSchedule($id)
+    {
+        // return $id;
+        return \App\Models\TimeTable::find($id);
     }
     public function sessions()
     {
@@ -45,6 +76,82 @@ class AdminController extends Controller
     public function modes()
     {
         $data['data'] = \App\Models\Mode::all();
-        return view('dashboards.admins.modes');
+        return view('dashboards.admins.modes', $data);
     }
+    public function store_mode()
+    {
+        # code...
+        $validator = Validator::make(request()->all(), [
+            'name'=>'required',
+            'price'=>'required'
+        ]);
+        if ($validator->fails()) {
+            return back()->with('error', json_encode($validator->getMessageBag()->getMessages()));
+        }
+        $instance = new \App\Models\Mode(request()->all());
+        $instance->save();
+        return back()->with('success', "Mode created successfully");
+    }
+    public function delete_mode($id)
+    {
+        try {
+            \App\Models\Mode::find($id)->delete();
+            return back()->with('success', 'Mode successfully deleted');
+        } catch (\Throwable $th) {
+            return back()->with('error', 'Sorry. Failed to delete mode. Try again later');
+        }
+    }
+
+    public function store_session()
+    {
+        try {
+            $validator = Validator::make(request()->all(), [
+                'start'=>'required|date',
+                'end'=>'required|date'
+            ]);
+            if ($validator->fails()) {
+                return back()->with('error', $validator->getMessageBag()->getMessages()[0]);
+            }
+            $instance = new \App\Models\Sessionz(request()->all());
+            $instance->save();
+            return back()->with('success', 'Session successfully created.');
+        } catch (\Throwable $th) {
+            return back()->with('error', $th->getMessage());
+        }
+
+    }
+
+    public function delete_session($id)
+    {
+        try {
+            \App\Models\Sessionz::find($id)->delete();
+            return back()->with('success', 'Session successfully deleted.');
+        } catch (\Throwable $th) {
+            // Date::p
+            return back()->with('error', 'Sorry. Error occured deleting session. Try again later.');
+        }
+    }
+
+    public function save_schedule()
+    {
+        $validator = Validator::make(request()->all(), [
+            'title'=>'required',
+            'start_date'=>'required|date',
+            'end_date'=>'required|date',
+            'schedules'=>'array'
+        ]);
+        if ($validator->fails()) {
+            return back()->with('error', json_encode($validator->getMessageBag()->getMessages()));
+        }
+        $request = [
+            'title'=>request('title'),
+            'start_date'=>request('start_date'),
+            'end_date'=>request('end_date'),
+            'schedules'=>json_encode(request('schedules')) 
+        ];
+        $instance = new \App\Models\TimeTable($request);
+        $instance->save();
+        return back()->with('success', 'Time table created successfully.');
+    }
+
 }
