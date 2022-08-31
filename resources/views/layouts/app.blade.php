@@ -23,9 +23,9 @@
     
 </head>
 <body>
-    <div id="app" class="">
-        <div class="">
-            <nav class="navbar navbar-expand-md navbar-light bg-white bb-y">
+    <div id="app">
+        <div class="part1 bg-white bb-y">
+            <nav class="navbar navbar-expand-md navbar-light">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Tech Driving School') }}
@@ -79,78 +79,81 @@
                 </div>
             </nav>
         </div>
-        <div class="">
+        <div class="part2">
             @guest
             <div class="w-100 row h-100">
                 @yield('content')
             </div>
             @else
             <div class="w-100 row h-100">
-                <div class=" col-md-3 h-100 pt-5 bg-y">
+                <div class=" col-md-4 col-lg-3 h-100 pt-5 bg-y">
                     <div class="container">
                         <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                             aria-expanded="false" aria-label="Toggle navigation">
                             <span class="fas fa-bars"></span>
                         </button>
-                        <div id="collapsibleNavId">
+                        <div id="collapsibleNavId navbar navbar-expand-md">
                             <div class="w-100 text-center">
                                 <span class="fas fa-layer-group fs-1 t-b fw-bolder"></span> 
                             </div>
                             <div class=" mx-auto mt-5 py-4 mt-lg-0 t-b h5">
                                 <div class="nav-item py-2 bb-b active">
-                                    <a class="nav-link" href="{{route('home')}}">Dashboard</a>
+                                    <a class="nav-link" href="{{route('home')}}"><i class="fas fa-graduation-cap ml-2 col-1"></i> Dashboard</a>
                                 </div>
                                 @if(auth()->user()->role == 1)
                                     <div class="nav-item py-2 bb-b">
-                                        <a class="nav-link" href="{{route('admin.students')}}">Students</a>
+                                        <a class="nav-link" href="{{route('admin.students')}}"><i class="fas fa-users ml-2 col-1  "></i> Students</a>
                                     </div>
                                     <div class="nav-item py-2 bb-b">
-                                        <a class="nav-link" href="{{route('admin.applications')}}">Applications</a>
+                                        <a class="nav-link" href="{{route('admin.applications')}}"> <i class="fas fa-file-archive ml-2 col-1  "></i> Applications</a>
                                     </div>
                                     <div class="nav-item py-2 bb-b">
-                                        <a class="nav-link" href="{{route('admin.payments')}}">Payments</a>
+                                        <a class="nav-link" href="{{route('admin.payments')}}"><i class="fas fa-money-bill-alt col-1   "></i> Payments</a>
                                     </div>
                                     <div class="nav-item py-2 bb-b">
-                                        <a class="nav-link" href="{{route('admin.sessions')}}">Sessions</a>
+                                        <a class="nav-link" href="{{route('admin.sessions')}}"><i class="fas fa-parking ml-2 col-1  "></i> Sessions</a>
                                     </div>
                                     <div class="nav-item py-2 bb-b">
-                                        <a class="nav-link" href="{{route('admin.modes')}}">Modes</a>
+                                        <a class="nav-link" href="{{route('admin.modes')}}"><i class="fas fa-adjust ml-2 col-1   "></i> Modes</a>
                                     </div>
                                     <div class="nav-item py-2 bb-b">
-                                        <a class="nav-link" href="{{route('admin.schedules')}}">Schedules</a>
+                                    <a href="{{route('admin.session.set_schedule')}}" class="nav-link"><i class="fas fa-procedures ml-2 col-1"> </i> assign schedule</a>
                                     </div>
                                     <div class="nav-item py-2 bb-b">
-                                        <a class="nav-link" href="{{route('admin.profile')}}">Profile</a>
+                                        <a class="nav-link" href="{{route('admin.schedules')}}"><i class="fas fa-project-diagram ml-2 col-1  "></i> Schedules</a>
                                     </div>
                                     <div class="nav-item py-2 bb-b">
-                                        <a class="nav-link" href="{{route('admin.settings')}}">Settings</a>
+                                        <a class="nav-link" href="{{route('admin.profile')}}"><i class="fas fa-info ml-2 col-1  "></i> Profile</a>
                                     </div>
                                     <div class="nav-item py-2 bb-b">
-                                        <a class="nav-link" href="{{route('admin.info')}}">Info</a>
+                                        <a class="nav-link" href="{{route('admin.settings')}}"><i class="fas fa-cogs ml-2 col-1  "></i> Settings</a>
+                                    </div>
+                                    <div class="nav-item py-2 bb-b">
+                                        <a class="nav-link" href="{{route('admin.info')}}"><i class="fas fa-database ml-2 col-1  "></i> Info</a>
                                     </div>
 
                                 @endif
                                 @if(auth()->user()->role == 2)
                                 
                                     <div class="nav-item py-2 bb-b">
-                                        <a class="nav-link" href="{{route('user.application')}}">Apply</a>
+                                        <a class="nav-link" href="{{route('user.application')}}"><i class="fas fa-file-archive ml-2 col-1  "></i>Apply</a>
                                     </div>
                                     @if(count(\DB::table('applications')->where('user_id', '=', auth()->user()->id)->get()) > 0)
                                     <div class="nav-item py-2 bb-b">
-                                        <a class="nav-link" href="{{route('user.application')}}">Payments</a>
+                                        <a class="nav-link" href="{{route('user.application')}}"><i class="fas fa-money-bill-alt col-1   "></i>Payments</a>
                                     </div>
                                     <div class="nav-item py-2 bb-b">
-                                        <a class="nav-link" href="{{route('user.time_table')}}">Time table</a>
+                                        <a class="nav-link" href="{{route('user.time_table')}}"><i class="fas fa-project-diagram ml-2 col-1  "></i>Time table</a>
                                     </div>
                                     @endif
                                     <div class="nav-item py-2 bb-b">
-                                        <a class="nav-link" href="{{route('user.settings')}}">Settings</a>
+                                        <a class="nav-link" href="{{route('user.profile')}}"><i class="fas fa-info ml-2 col-1  "></i>Profile</a>
                                     </div>
                                     <div class="nav-item py-2 bb-b">
-                                        <a class="nav-link" href="{{route('user.profile')}}">Profile</a>
+                                        <a class="nav-link" href="{{route('user.settings')}}"><i class="fas fa-cogs ml-2 col-1  "></i>Settings</a>
                                     </div>
                                     <div class="nav-item py-2 bb-b">
-                                        <a class="nav-link" href="#">Info</a>
+                                        <a class="nav-link" href="#"><i class="fas fa-database ml-2 col-1  "></i>Info</a>
                                     </div>
                                 @endif
                             </div>
@@ -158,7 +161,7 @@
                     </div>
                     
                 </div>
-                <div class=" col-md-9 h-100">
+                <div class=" col-md-8 col-lg-9 h-100 d-flex flex-column overflow-scroll">
                     <div class="w-100 text-center py-3">
                         @if(session('error'))
                         <span class="fs-4 text-danger">{{session('error')}}</span>

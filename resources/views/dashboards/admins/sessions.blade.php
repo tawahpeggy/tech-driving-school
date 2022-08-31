@@ -32,9 +32,12 @@
                                     <td>{{date('l dS M Y', strtotime($item->start))}}</td>
                                     <td>{{date('l dS M Y', strtotime($item->end))}}</td>
                                     <td>
-                                        <a onclick="edit('{{$item->id}}')" class="btn bt-sm btn-default t-y text-sm py-1" title="edit session"><i class="fas fa-edit "></i></a>
-                                        <a onclick="edit('{{$item->id}}')" class="btn bt-sm btn-default t-y text-sm py-1" title="session details"><i class="fas fa-expand-arrows-alt    "></i></a>
-                                        <a href="{{route('admin.delete_session', $item->id)}}" class="btn btn-sm btn-default t-y text-sm" title="delete session"><i class="fas fa-trash-alt "></i></a>
+                                        <a onclick="edit('{{$item->id}}')" class="btn bt-sm btn-default t-y text-sm py-1" title="edit session"><i class="fas fa-edit ">edit</i></a>
+                                        <a onclick="edit('{{$item->id}}')" class="btn bt-sm btn-default t-y text-sm py-1" title="session details"><i class="fas fa-expand-arrows-alt    ">details</i></a>
+                                        <a href="{{route('admin.delete_session', $item->id)}}" class="btn btn-sm btn-default t-y text-sm" title="delete session"><i class="fas fa-trash-alt ">delete</i></a>
+                                        @if(count(\App\Models\SessionSchedule::where('session_id', '=', $item->id)->get()) > 0)
+                                        <a href="{{route('admin.session.schedule', $item->id)}}" class="btn bt-sm btn-default t-y text-sm py-1" title="time table"><i class="fas fa-clock    ">schedule</i></a>
+                                        @endif
                                     </td>
                                 </tr>
                                 @php($cnt++)

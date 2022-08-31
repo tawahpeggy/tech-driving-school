@@ -154,4 +154,31 @@ class AdminController extends Controller
         return back()->with('success', 'Time table created successfully.');
     }
 
+    public function set_session_schedule()
+    {
+        return view('dashboards.admins.session-schedule')->with('flag', 1);
+    }
+    public function session_schedule($id)
+    {
+        return view('dashboards.admins.session-schedule')->with('flag', 2);
+    }
+
+    public function save_session_schedule()
+    {
+        // return request()->all();
+        $validator = Validator::make(request()->all(), [
+            'sessionz' => 'required',
+            'schedules[]' => 'array'
+        ]);
+        if ($validator->fails()) {
+            return back()->with('error', json_encode($validator->getMessageBag()->getMessages()[0]));
+        }
+        $pairs = [];
+        foreach (request('schedules') as $shedule_id) {
+            $pairs[] = ['session_id'=>request('sessionz'), 'schedule_id'=>$shedule_id];
+        }
+        \App\Models\SessionSchedule::insert($pairs);
+        return back()->with('success', 'SUCCESS');
+    }
+
 }

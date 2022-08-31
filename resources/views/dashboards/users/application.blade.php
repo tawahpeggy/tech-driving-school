@@ -111,9 +111,11 @@
                                     <div class="col-sm-4 text-end text-capitalize">mode:</div>
                                     <div class="col-sm-8 text-end text-capitalize"><select name="mode" id="" class="form-control border-0 border-bottom border-dark rounded-0 bg-white " required>
                                         <option value="" selected>select mode</option>
-                                        <option value="1">Super Fast Mode</option>
-                                        <option value="2">Fast Mode</option>
-                                        <option value="3">Normal Mode</option>
+                                        @forelse(\App\Models\Mode::all() as $mode)
+                                        <option value="{{$mode->id}}">{{$mode->name}}</option>
+                                        @empty
+                                        <option value="" selected>No mode available</option>
+                                        @endforelse
                                     </select></div>
                                 </div>
                             </div>
@@ -126,14 +128,11 @@
                                     <div class="col-sm-4 text-end text-capitalize">session:</div>
                                     <div class="col-sm-8 text-end text-capitalize"><select name="session" id="" class="form-control border-0 border-bottom border-dark rounded-0 bg-white " required>
                                         <option value="" selected>select session</option>
-                                        <option value="1">NOVEMBER-JANUARY</option>
-                                        <option value="2">JANUARY-MARCH</option>
-                                        <option value="3">FRBRUARY-APRIL</option>
-                                        <option value="4">APRIL-JUNE</option>
-                                        <option value="5">MAY-JULY</option>
-                                        <option value="6">JULY-SEPTEMBER</option>
-                                        <option value="7">AUGUST-OCTOBER</option>
-                                        <option value="8">OCTOBER-DECEMBER</option>
+                                        @forelse(\App\Models\Sessionz::all() as $item)
+                                            <option value="{{$item->id}}" class="text-uppercase"><span class="t-b mr-1">From {{date('l dS M Y', strtotime($item->start))}}</span> ||| <span class="t-y ml-1">To {{date('l dS M Y', strtotime($item->end))}}</span></option>
+                                        @empty
+                                            <option value="" selected>No sessions are set.</option>
+                                        @endforelse
                                     </select></div>
                                 </div>
                             </div>

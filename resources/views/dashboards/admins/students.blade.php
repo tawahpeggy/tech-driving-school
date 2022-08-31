@@ -8,7 +8,6 @@
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                     <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">ALL</button>
-                    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">...</button>
                     <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">UPDATE</button>
                 </div>
             </nav>
@@ -35,8 +34,8 @@
                                     <td>{{\App\Models\Mode::find($item->mode)->name ?? '-----'}}</td>
                                     <td>{{'From '.\App\Models\Sessionz::find($item->session)->start ?? null.' to '.\App\Models\Sessionz::find($item->session)->end ?? '-----'}}</td>
                                     <td class="bg-y">
-                                        <a onclick="details('{{$item->id}}')" class="btn bt-sm  t-b text-sm py-1" title="more"><i class="fas fa-eye "></i></a>
-                                        <a onclick="edit('{{$item->id}}')" class="btn bt-sm  t-b text-sm py-1" title="accept"><i class="fas fa-calendar-check"></i></a>
+                                        <a href="{{route('admin.students', $item->id)}}" class="btn bt-sm  t-b text-sm py-1" title="more"><i class="fas fa-eye "></i></a>
+                                        <a onclick="edit('{{$item->id}}')" class="btn bt-sm  t-b text-sm py-1" title="edit"><i class="fas fa-edit"></i></a>
                                         <a href="{{route('admin.delete_session', $item->id)}}" class="btn btn-sm btn-default t-b text-sm" title="delete"><i class="fas fa-trash-alt "></i></a>
                                     </td>
                                 </tr>
@@ -46,24 +45,83 @@
                             @endforelse
                         </tbody>
                     </table>
-                </div>
-
-                <div class="tab-pane fade py-3" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
-                    <div class="fs-3 text-uppercase text-center t-b py-5">NEW SESSION</div>
-                    <form action="{{route('admin.sessions')}}" method="post" class="col-9 mx-auto">
-                        @csrf
-                        <div class="row py-2">
-                            <div class="col-sm-3 text-end text-capitalize">start date:</div>
-                            <div class="col-sm-8 text-end text-capitalize"><input type="date" name="start" id="" class="form-control border-0 border-bottom border-dark rounded-0" required placeholder="start date"></div>
+                    <div class="py-3" id="CONTORO" >
+                        @if(request('id') != null)
+                        <div class="w-100">
+                            <?php $apl = \App\Models\Application::find(request('id')); ?>
+                            <div class="d-flex flex-wrap justify-content-center">
+                                <div class="m-1 col-sm-4 col-md-3 border-0 bg-transparent">
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        <img src="{{asset('storage/uploads/images/passport/'.$apl->passport_photo)}}" alt="PROFILE PICTURE" class="embed-responsive-item img-thumbnail">
+                                    </div>
+                                    <div class="card-title text-center">PROFILE PICTURE</div>
+                                </div>
+                                <div class="m-1 col-sm-4 col-md-3 border-0 bg-transparent">
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        <img src="{{asset('storage/uploads/images/id/front/'.$apl->id_front)}}" alt="NIC FRONT" class="embed-responsive-item img-thumbnail">
+                                    </div>
+                                    <div class="card-title text-center">ID-CARD FRONT</div>
+                                </div>
+                                <div class="m-1 col-sm-4 col-md-3 border-0 bg-transparent">
+                                    <div class="embed-responsive embed-responsive-16by9">
+                                        <img src="{{asset('storage/uploads/images/id/back/'.$apl->id_back)}}" alt="NIC BACK" class="embed-responsive-item img-thumbnail">
+                                    </div>
+                                    <div class="card-title text-center">ID-CARD BACK</div>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-wrap justify-content-center">
+                                <div class="card m-1 col-sm-4 col-md-3 border-0 bg-transparent">
+                                    <div class="input-group mt-3">
+                                        <span class="input-group-text bg-transparent"><small>First name</small></span>
+                                        <span class="form-control">{{$apl->first_name}}</span>
+                                    </div>
+                                    <div class="input-group mt-3">
+                                        <span class="input-group-text bg-transparent"><small>Last name</small></span>
+                                        <span class="form-control">{{$apl->last_name}}</span>
+                                    </div>
+                                    <div class="input-group mt-3">
+                                        <span class="input-group-text bg-transparent"><small>Born on</small></span>
+                                        <span class="form-control">{{$apl->dob}}</span>
+                                    </div>
+                                </div>
+                                <div class="card m-1 col-sm-4 col-md-3 border-0 bg-transparent">
+                                    <div class="input-group mt-3">
+                                        <span class="input-group-text bg-transparent"><small>Born at</small></span>
+                                        <span class="form-control">{{$apl->pob}}</span>
+                                    </div>
+                                    <div class="input-group mt-3">
+                                        <span class="input-group-text bg-transparent"><small>NIC No</small></span>
+                                        <span class="form-control">{{$apl->cni_number}}</span>
+                                    </div>
+                                    <div class="input-group mt-3">
+                                        <span class="input-group-text bg-transparent"><small>Issued on</small></span>
+                                        <span class="form-control">{{$apl->cni_date}}</span>
+                                    </div>
+                                    
+                                </div>
+                                <div class="card m-1 col-sm-4 col-md-3 border-0 bg-transparent">
+                                    <div class="input-group mt-3">
+                                        <span class="input-group-text bg-transparent"><small>Issued at</small></span>
+                                        <span class="form-control">{{$apl->cni_post}}</span>
+                                    </div>
+                                    <div class="input-group mt-3">
+                                        <span class="input-group-text bg-transparent"><small>Mode</small></span>
+                                        <span class="form-control">{{$apl->mode}}</span>
+                                    </div>
+                                    <div class="input-group mt-3">
+                                        <span class="input-group-text bg-transparent"><small>Session</small></span>
+                                        <span class="form-control">{{$apl->session}}</span>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="d-flex justify-content-center border-top">
+                                <a href="" class="rounded-pill px-3 py-1 bg-y t-b mx-3 my-2"><i class="fas fa-edit mx-1   "></i>edit</a>
+                                <a href="" class="rounded-pill px-3 py-1 bg-y t-b mx-3 my-2"><i class="fas fa-trash-alt mx-1   "></i>delete</a>
+                            </div>
                         </div>
-                        <div class="row py-2">
-                            <div class="col-sm-3 text-end text-capitalize">end date:</div>
-                            <div class="col-sm-8 text-end text-capitalize"><input type="date" name="end" id="" class="form-control border-0 border-bottom border-dark rounded-0" required placeholder="end date"></div>
-                        </div>
-                        <div class="col-11 d-flex justify-content-end py-2">
-                            <input type="submit" name="submit" value="submit" id="" class="btn btn-default border-dark text-capitalize"></div>
-                        </div>
-                    </form>
+                        @endif
+                    </div>
                 </div>
 
                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
