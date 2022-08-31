@@ -39,11 +39,17 @@
 .bb-y{
     border-bottom: 1px solid var(--color-yellow);
 }
-/* #app{
+#app{
     height: 100vh;
+}
+#app .part1{
+    height: 10%;
+}
+#app .part2{
+    height: 90%;
 }
 @media screen and (max-width: 567px) {
     #app{
         min-height: 100vh;
     }
-} */
+}

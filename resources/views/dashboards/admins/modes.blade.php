@@ -18,7 +18,7 @@
                     <div class="my-5 text-center t-b fs-3">No modes available</div>
                 @else
                     <table class="table">
-                        <thead class="bg-secondary t-b">
+                        <thead class="bg-y t-b">
                             <th>#</th>
                             <th>NAME</th>
                             <th>PRICE</th>
