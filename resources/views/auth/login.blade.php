@@ -23,6 +23,7 @@
 
     main {
         display: flex;
+        flex-wrap: wrap;
         width: 100%;
         margin: auto;
         justify-content: center;
@@ -36,7 +37,7 @@
     }
 
     .box1 {
-        background-color: rgba(255, 255, 0, 0.647);
+        background-color: rgb(5, 0, 29);
         width: 50%;
         border-bottom-left-radius: 20px;
         border-top-left-radius: 20px;
@@ -56,6 +57,37 @@
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
 
 
+    }
+
+    @media screen and (max-width:765px){
+        .box1{
+            width: 30%;
+        }
+        .box2{
+            width: 70%;
+            padding-inline: 1rem;
+        }
+        .item2{
+            width: 90%;
+        }
+        main{
+            margin-block: 2rem;
+        }
+    }
+    @media screen and (max-width:567px){
+        .box1{
+            width: 100%;
+            height: auto;
+            border-radius: 0.7rem 0.7rem 0 0;
+        }
+        .box2{
+            width: 100%;
+            height: auto;
+            border-radius: 0 0 0.7rem 0.7rem;
+        }
+        .item2{
+            width: 98%;
+        }
     }
 
     #text {
@@ -93,8 +125,8 @@
     }
 
     button:hover {
-        background-color: black;
-        color: yellow;
+        background-color: rgb(118, 118, 248);
+        color: rgb(5, 0, 29);
     }
 
     a {
@@ -137,7 +169,7 @@
                 <main>
                     <div class="box1">
                         <br /> <br />
-                        <h3 class="text-center fw-bold">{{ __('Login') }}</h3><br />
+                        <h3 class="text-center fw-bold t-b fs-4">{{ __('Login') }}</h3><br />
                         {{-- <img class="logo-image" src="{{ asset('images/logoImage.jpg') }}" alt="driving school logo" width="40%"> --}}
                         {{-- <img src="{{ asset('images/image_reg.jpeg') }}" alt="driving school image" width="50%"><br/> --}}
                     </div>
@@ -204,7 +236,7 @@
 
                                 <div class="row mb-0">
                                     <div class="col-md-7 offset-md-3">
-                                        <button type="submit" class="bt">
+                                        <button type="submit" class="t-b bg-y px-3 py-1 rounded d-block mx-auto text-center">
                                             {{ __('Login') }}
                                         </button>
                                         <p>Don't have an account yet? <a href="/register"><b>Sign Up</b></a></p>

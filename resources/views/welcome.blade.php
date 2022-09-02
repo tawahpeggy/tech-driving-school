@@ -149,7 +149,7 @@ h2 {
   margin: auto;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url({{ asset('images/car-steering.jpg') }});
+  background-image: url("{{ asset('images/car-steering.jpg') }}");
 }
 
 .content {
@@ -313,7 +313,7 @@ h2 {
             margin: auto;
             background-size: cover;
             background-repeat: no-repeat;
-            background-image: url({{ asset('images/car-steering.jpg') }});
+            background-image: url("{{ asset('images/car-steering.jpg') }}");
         }
 
         .content {
@@ -452,7 +452,7 @@ h2 {
             position: relative;
             display: block;
             opacity: 1;
-            background: url('{{ asset('images/car-steering.jpg') }}');
+            background: url("{{ asset('images/car-steering.jpg') }}");
             background-size: cover;
             animation: slide 10s infinite;
         }
@@ -464,17 +464,17 @@ h2 {
 
         @keyframes slide {
             25% {
-                background: url('{{ asset('images/drive8.webp') }}');
+                background: url("{{ asset('images/drive8.webp') }}");
                 background-size: cover;
             }
 
             50% {
-                background: url('{{ asset('images/drive9.jpg') }}');
+                background: url("{{ asset('images/drive9.jpg') }}");
                 background-size: cover;
             }
 
             75% {
-                background: url('{{ asset('images/drive9.jpg') }}');
+                background: url("{{ asset('images/drive9.jpg') }}");
                 background-size: cover;
             }
         }

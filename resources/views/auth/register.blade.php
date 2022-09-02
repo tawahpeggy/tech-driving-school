@@ -23,6 +23,7 @@
 
     main {
         display: flex;
+        flex-wrap: wrap;
         width: 100%;
         margin: auto;
         justify-content: center;
@@ -36,13 +37,15 @@
     }
 
     .box1 {
-        background-color: rgba(255, 255, 0, 0.647);
+        background-color: rgb(5, 0, 29);
         width: 50%;
         border-bottom-left-radius: 20px;
         border-top-left-radius: 20px;
         height: 500px;
         align-items: center;
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+
+
     }
 
     .box2 {
@@ -52,6 +55,39 @@
         border-top-right-radius: 20px;
         height: 500px;
         box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+
+
+    }
+
+    @media screen and (max-width:765px){
+        .box1{
+            width: 30%;
+        }
+        .box2{
+            width: 70%;
+            padding-inline: 1rem;
+        }
+        .item2{
+            width: 90%;
+        }
+        main{
+            margin-block: 2rem;
+        }
+    }
+    @media screen and (max-width:567px){
+        .box1{
+            width: 100%;
+            height: auto;
+            border-radius: 0.7rem 0.7rem 0 0;
+        }
+        .box2{
+            width: 100%;
+            height: auto;
+            border-radius: 0 0 0.7rem 0.7rem;
+        }
+        .item2{
+            width: 98%;
+        }
     }
 
     #text {
@@ -76,6 +112,7 @@
         box-shadow: 2px 2px 2px 2px rgb(205, 200, 200);
         width: 22.5vw;
         font-size: 10px;
+
     }
 
     .bt {
@@ -88,8 +125,8 @@
     }
 
     button:hover {
-        background-color: black;
-        color: yellow;
+        background-color: rgb(118, 118, 248);
+        color: rgb(5, 0, 29);
     }
 
     a {
@@ -123,6 +160,7 @@
         justify-content: center;
         margin: 0, auto
     }
+
 </style>
 @section('content')
 
@@ -132,7 +170,7 @@
                 <main>
                     <div class="box1">
                         <br /> <br />
-                        <h3 class="text-center fw-bold">{{ __('Register') }}</h3><br />
+                        <h3 class="text-center fw-bold fs-4 t-b">{{ __('Register') }}</h3><br />
                         {{-- <img class="logo-image" src="{{ asset('images/logoImage.jpg') }}" alt="driving school logo" width="40%"> --}}
                         {{-- <img src="{{ asset('images/image_reg.jpeg') }}" alt="driving school image" width="50%"><br/> --}}
                     </div>
@@ -212,7 +250,7 @@
                                 <div class="row mb-0">
                                     <div class="col-md-1"></div>
                                     <div class="col-md-8 offset-md-2">
-                                        <button type="submit" class="bt">
+                                        <button type="submit" class="py-1 px-3 fs-5 bg-y t-b rounded mx-auto d-block text-center">
                                             {{ __('Register') }}
                                         </button>
                                     </div>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="w-100 h-100 bg-light py-3">
+<div class="col-sm-11 col-md-9 mx-auto h-100 bg-light py-3">
     <div class="my-1 px-2 w-100">
         @php
             $session_id = \App\Models\Application::where('user_id', '=', auth()->user()->id)->get('session')->toArray();
@@ -43,7 +43,7 @@
                         </div>
                     @endif
                     <div class="d-flex justify-content-end py-4">
-                        <input type="submit" name="" id="" value="submit" class="px-3 py-1 bg-y t-b">
+                        <input type="submit" name="" id="" value="next" class="px-3 py-1 bg-y t-b rounded">
                     </div>
                 </form>
                     
@@ -62,7 +62,7 @@
                             <tbody>
                                 @php($days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'])
                                 @forelse(json_decode($item->schedules) as $k => $sc)
-                                    <tr class="bb-y text-y" style="background-color: {{ $fl ? '#dea' : '#fefedb'}}">
+                                    <tr class="bb-y text-y {{ $fl ? 't-b bg-w' : 't-w bg-b'}}" style="background-color: ">
                                         <td class="border border-top-0 border-bottom-0 text-uppercase fw-2" style="background-color: #05051a; color: white;">{{$days[$k]}}</td>
                                         <td class="border border-top-0 border-bottom-0">{{$sc[0] ?? '-----'}}</td>
                                         <td class="border border-top-0 border-bottom-0">{{$sc[1] ?? '-----'}}</td>

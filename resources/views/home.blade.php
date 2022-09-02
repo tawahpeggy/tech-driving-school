@@ -288,21 +288,21 @@
                             </div>
                             <div class="col-sm-9 mx-auto my-5 p-3 bg-w rounded">
                                 <div class="d-flex justify-content-center mb-4">
-                                    <i class="fas fa-user t-b  " style="font-size: 8rem;"></i>
+                                    <i class="fas fa-user t-y  " style="font-size: 6rem;"></i>
                                 </div>
                                 <div class="">
-                                    <div class="row py-3">
-                                        <div class="col-sm-4 text-end text-capitalize">name:</div>
-                                        <div class="col-sm-8 text-start fw-bold text-uppercase">{{ auth()->user()->name }}
+                                    <div class="row py-1">
+                                        <div class="col-sm-6 text-end text-capitalize">name:</div>
+                                        <div class="col-sm-6 text-start fw-bold text-uppercase">{{ auth()->user()->name }}
                                         </div>
                                     </div>
-                                    <div class="row py-3">
-                                        <div class="col-sm-4 text-end text-capitalize">email:</div>
-                                        <div class="col-sm-8 text-start fw-bold text-uppercase">{{ auth()->user()->email }}
+                                    <div class="row py-1">
+                                        <div class="col-sm-6 text-end text-capitalize">email:</div>
+                                        <div class="col-sm-6 text-start fw-bold text-uppercase">{{ auth()->user()->email }}
                                         </div>
                                     </div>
-                                    <div class="row py-3">
-                                        <div class="col-sm-8 text-center mx-auto fw-bold text-uppercase">GENDER</div>
+                                    <div class="row py-1">
+                                        <div class="col-sm-6 text-center mx-auto fw-bold text-uppercase">{{auth()->user()->role_id == 1 ? 'admin' : 'user'}}</div>
                                     </div>
                                 </div>
                             </div>
