@@ -86,23 +86,23 @@
             </div>
             @else
             <div class="w-100 row h-100">
-                <div class=" col-md-4 col-lg-3 h-100 pt-5 bg-y">
+                <div class="col-xs-12 col-md-4 col-lg-3 py-4 bg-y part2-nav">
                     <div class="container">
-                        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                        <button class="navbar-toggler d-lg-none" id="nav-toggle-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                             aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="fas fa-bars"></span>
+                            <span class="fas fa-bars t-w fw-bold fs-4"></span>
                         </button>
-                        <div id="collapsibleNavId navbar navbar-expand-md">
+                        <div id="collapsibleNavId" class="navbar">
                             <div class="w-100 text-center">
                                 <span class="fas fa-layer-group fs-1 t-b fw-bolder"></span> 
                             </div>
-                            <div class=" mx-auto mt-5 py-4 mt-lg-0 t-b h5">
+                            <div class="col-xs-8 col-sm-10 mx-auto mt-5 py-4 mt-lg-0 t-b h5">
                                 <div class="nav-item py-2 bb-b active">
                                     <a class="nav-link" href="{{route('home')}}"><i class="fas fa-graduation-cap ml-2 col-1"></i> Dashboard</a>
                                 </div>
                                 @if(auth()->user()->role == 1)
                                     <div class="nav-item py-2 bb-b">
-                                        <a class="nav-link" href="{{route('admin.students')}}"><i class="fas fa-users ml-2 col-1  "></i> Students</a>
+                                        <a class="nav-link" href="{{route('admin.students')}}"><i class="fas fa-users ml-2 col-2 col-sm-1  "></i> Students</a>
                                     </div>
                                     <div class="nav-item py-2 bb-b">
                                         <a class="nav-link" href="{{route('admin.applications')}}"> <i class="fas fa-file-archive ml-2 col-1  "></i> Applications</a>
@@ -161,7 +161,7 @@
                     </div>
                     
                 </div>
-                <div class=" col-md-8 col-lg-9 h-100 d-flex flex-column overflow-scroll">
+                <div class="col-xs-12 col-md-8 col-lg-9 h-100 d-flex flex-column overflow-scroll py-5">
                     <div class="w-100 text-center py-3">
                         @if(session('error'))
                         <span class="fs-4 text-danger">{{session('error')}}</span>
@@ -179,6 +179,7 @@
             @endguest
         </div>
     </div>
+  
     @yield('script')
 </body>
 </html>

@@ -48,8 +48,11 @@
 #app .part2{
     height: 90%;
 }
-@media screen and (max-width: 567px) {
+@media screen and (max-width: 576px) {
     #app{
         min-height: 100vh;
+    }
+    #app .part2-nav{
+        height: auto;
     }
 }
