@@ -108,8 +108,8 @@
  <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
-                    <div class="container-fluid">
+                <div class="card p-0">
+                    <div class="container-fluid bg-y rounded-3">
                         <div class="row justify-content-center">
                             <div class="col-md-10">
                                 {{-- tabs --}}
@@ -277,7 +277,7 @@
                                     </div>
                             </div>
                         </div>
-                        <div class="w-100py-5">
+                        <div class="w-100 py-5">
                             <div class="text-center mt-4 py-4 fs-3 fw-bold text-capitalize t-b">
                                 @if (auth()->user()->role == 1)
                                     Welcome {{ auth()->user()->name }}
@@ -286,23 +286,23 @@
                                     Welcome {{ auth()->user()->name }}
                                 @endif
                             </div>
-                            <div class="col-sm-9 mx-auto my-5 p-3 bg-w rounded">
+                            <div class="col-sm-9 mx-auto my-5 p-3 bg-b rounded">
                                 <div class="d-flex justify-content-center mb-4">
                                     <i class="fas fa-user t-y  " style="font-size: 6rem;"></i>
                                 </div>
-                                <div class="">
+                                <div class="t-w">
                                     <div class="row py-1">
-                                        <div class="col-sm-6 text-end text-capitalize">name:</div>
-                                        <div class="col-sm-6 text-start fw-bold text-uppercase">{{ auth()->user()->name }}
+                                        <div class="col text-end text-capitalize">name:</div>
+                                        <div class="col text-sm-start fw-bold text-uppercase">{{ auth()->user()->name }}
                                         </div>
                                     </div>
                                     <div class="row py-1">
-                                        <div class="col-sm-6 text-end text-capitalize">email:</div>
-                                        <div class="col-sm-6 text-start fw-bold text-uppercase">{{ auth()->user()->email }}
+                                        <div class="col text-end text-capitalize">email:</div>
+                                        <div class="col text-sm-start fw-bold text-uppercase">{{ auth()->user()->email }}
                                         </div>
                                     </div>
                                     <div class="row py-1">
-                                        <div class="col-sm-6 text-center mx-auto fw-bold text-uppercase">{{auth()->user()->role_id == 1 ? 'admin' : 'user'}}</div>
+                                        <div class="col text-center mx-auto fw-bold text-uppercase">{{auth()->user()->role_id == 1 ? 'admin' : 'user'}}</div>
                                     </div>
                                 </div>
                             </div>

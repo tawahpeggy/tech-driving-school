@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\COntrollers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Application;
+use App\Http\Controllers\PublicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,7 +49,15 @@ Route::group(['prefix'=>'admin' ,'middleware'=>['isAdmin','auth']],function(){
     Route::get('modes/{id}',[AdminController::class,'delete_mode'])->name('admin.delete_mode');
     Route::post('modes',[AdminController::class,'store_mode']);
     Route::put('modes',[AdminController::class,'update_mode']);
-    Route::get('info',[AdminController::class,'payments'])->name('admin.info');
+    // Route::get('info',[AdminController::class,'payments'])->name('admin.info');
+    Route::get('services', [PublicController::class, 'services'])->name('admin.services');
+    Route::post('services', [PublicController::class, 'store_service']);
+    Route::get('gallery', [PublicController::class, 'gallery'])->name('admin.gallery');
+    Route::post('gallery', [PublicController::class, 'store_to_gallery']);
+    Route::get('info', [PublicController::class, 'info'])->name('admin.info');
+    Route::post('info', [PublicController::class, 'store_info']);
+    Route::get('blog', [PublicController::class, 'blog'])->name('admin.blog');
+    Route::post('blog', [PublicController::class, 'store_post']);
 });
 
 Route::group(['prefix'=>'user' ,'middleware'=>['isUser','auth']],function(){
