@@ -4,7 +4,7 @@
 
 <div class="w-100 h-100 bg-light">
     <div class="row justify-content-center">
-        <div class="col-md-11 mx-auto my-5 rounded ">
+        <div class="col-md-11 mx-auto my-5 rounded px-3 py-5 rounded-2 bg-w">
             @if(!request('action'))
                 @php($apls = \App\Models\Application::where('user_id', auth()->user()->id)->get())
                 @if(count($apls)>0)
@@ -50,14 +50,14 @@
                     <form action="{{route('user.apply')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="py-4">
-                            <nav>
+                            <!-- <nav>
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">PERSONAL INFORMATION</button>
                                     <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">IDENTIFICATION</button>
                                     <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">MODE</button>
                                     <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button" role="tab" aria-controls="nav-disabled" aria-selected="false">SESSION</button>
                                 </div>
-                            </nav>
+                            </nav> -->
                             <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade show active py-3" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
                                     <div class="fs-3 text-uppercase text-center t-b py-5">Personal Information</div>
@@ -76,6 +76,9 @@
                                     <div class="row py-2">
                                         <div class="col-sm-3 col-md-2 text-end text-capitalize">place of birth:</div>
                                         <div class="col-sm-8  text-end text-capitalize"><input type="text" name="pob" id="" class="form-control border-0 border-bottom border-dark rounded-0 bg-white" required placeholder="place of birth"></div>
+                                    </div>
+                                    <div class="d-flex py-2 justify-content-end w-100">
+                                        <a class="btn" onclick="show('nav-profile')"><i class="fas fa-caret-square-right   fa-3x t-y "></i></a>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade py-3" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
@@ -133,6 +136,10 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="d-flex py-2 justify-content-between w-100">
+                                        <a class="btn" onclick="show('nav-home')"><i class="fas fa-caret-square-left fa-3x t-y "></i></a>
+                                        <a class="btn" onclick="show('nav-contact')"><i class="fas fa-caret-square-right fa-3x t-y "></i></a>
+                                    </div>
                                 </div>
                                 <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
                                     <div class="fs-3 text-uppercase text-center t-b py-5">OPERATING MODE</div>
@@ -159,6 +166,10 @@
                                             @endforelse
                                         </select></div>
                                     </div>
+                                    <div class="d-flex py-2 justify-content-between w-100">
+                                        <a class="btn" onclick="show('nav-profile')"><i class="fas fa-caret-square-left fa-3x t-y "></i></a>
+                                        <a class="btn" onclick="show('nav-disabled')"><i class="fas fa-caret-square-right fa-3x t-y "></i></a>
+                                    </div>
                                 </div>
                                 <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">
                                     <div class="fs-3 text-uppercase text-center t-b py-5">TRAINING SESSION</div>
@@ -174,6 +185,9 @@
                                             @endforelse
                                         </select></div>
                                     </div>
+                                    <div class="d-flex py-2 justify-content-start w-100">
+                                        <a class="btn" onclick="show('nav-contact')"><i class="fas fa-caret-square-left fa-3x t-y "></i></a>
+                                    </div>
                                 </div>
                             </div>
                             <div class="d-flex justify-content-end">
@@ -186,7 +200,7 @@
 
             @if(request('action')=='details')
                 @php($apl = \App\Models\Application::find(request('id')))
-                <div class="p-2">
+                <div class="">
                     <div class="text-center py-2 fs-4 text-center t-b text-uppercase">
                         Application {{$apl->status ?? 'state unknown'}}
                     </div>
@@ -230,6 +244,18 @@
 @endsection
 @section('script')
 <script>
+
+    function show(id){
+        document.querySelectorAll('.tab-pane').forEach(function(elt, key, parent){
+            elt.classList.remove('show');
+            elt.classList.remove('active');
+            // document.querySelector('#'+el.id+'-tab').classList.remove('active');
+        });
+
+        document.querySelector('#'+id).classList.add('active');
+        document.querySelector('#'+id).classList.add('show');
+        // document.querySelector('#'+id+'-tab').classList.add('active');
+    }
 
     function preview(element) {
         console.log(element.files[0]);

@@ -1,7 +1,11 @@
 *{
-    --color-white: #fff;
-    --color-yellow: rgb(5, 0, 29);
-    --color-black: rgb(118, 118, 248);
+    --x-color-white: #fff;
+    --x-color-yellow: rgb(5, 0, 29);
+    --x-color-black: rgb(118, 118, 248);
+    
+    --color-white: rgb(160, 176, 233);
+    --color-yellow: rgb(49, 65, 119);
+    --color-black: rgb(1, 7, 29);
 }
 .t-w{
     color: var(--color-white);
@@ -47,6 +51,9 @@
 }
 #app .part2{
     height: 90%;
+}
+#app .part2 .navbar .nav-item :hover{
+    color: var(--color-white);
 }
 @media screen and (max-width: 576px) {
     #app{
