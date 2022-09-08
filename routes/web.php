@@ -51,12 +51,16 @@ Route::group(['prefix'=>'admin' ,'middleware'=>['isAdmin','auth']],function(){
     Route::put('modes',[AdminController::class,'update_mode']);
     // Route::get('info',[AdminController::class,'payments'])->name('admin.info');
     Route::get('services', [PublicController::class, 'services'])->name('admin.services');
+    Route::get('services/delete/{id}', [PublicController::class, 'delete_service']);
     Route::post('services', [PublicController::class, 'store_service']);
     Route::get('gallery', [PublicController::class, 'gallery'])->name('admin.gallery');
+    Route::get('gallery/delete/{id}', [PublicController::class, 'delete_gallery']);
     Route::post('gallery', [PublicController::class, 'store_to_gallery']);
     Route::get('info', [PublicController::class, 'info'])->name('admin.info');
+    Route::get('info/delete/{id}', [PublicController::class, 'delete_info']);
     Route::post('info', [PublicController::class, 'store_info']);
     Route::get('blog', [PublicController::class, 'blog'])->name('admin.blog');
+    Route::get('blog/delete/{id}', [PublicController::class, 'delete_blog']);
     Route::post('blog', [PublicController::class, 'store_post']);
 });
 

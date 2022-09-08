@@ -24,7 +24,7 @@
 </head>
 <body>
     <div id="app">
-        <div class="part1 bg-y bb-b">
+        <div class="part1 bg-y bb-w">
             <nav class="navbar navbar-expand-md navbar-light">
                 <div class="container text-decoration-none t-b">
                     <div class="navbar-brand">

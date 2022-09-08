@@ -97,7 +97,7 @@ class PublicController extends Controller
     public function update_info(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'access'=>'text|enum:public,auth,admin'
+            'access'=>'in:public,auth,admin'
         ]);
         if ($validator->fails()) {
             # code...
@@ -124,13 +124,13 @@ class PublicController extends Controller
             # code...
             return array_values($validator->getMessageBag()->getMessages())[0];
         }
-
+        
         if ($request->hasFile('icon')) {
             # code...
             $filename = time().'_'.random_int(1111,9999).'.'.$request->file('icon')->getClientOriginalExtension();
             $request->file('icon')->storeAs('public/uploads/images/services/', $filename);
         }
-
+        
         $service_instance = new \App\Models\Service($request->all());
         $service_instance->icon = $filename ?? '';
         $service_instance->save();
@@ -144,6 +144,7 @@ class PublicController extends Controller
             'image'=>'file|image|mimes:png,jpg,jif,jpeg',
             'links'=>'array'
         ]);
+        return $request->links; 
         if ($validator->fails()) {
             # code...
             return array_values($validator->getMessageBag()->getMessages())[0];
@@ -155,15 +156,19 @@ class PublicController extends Controller
         }
         $post_instance = new \App\Models\Blog($request->all());
         $post_instance->image = $filename ?? '';
+        // return $post_instance;
         $post_instance->save();
+        $links = $request->labels ? array_map(function($key, $value) use ($post_instance){
+            return ['post_id'=>$post_instance->id, 'label'=>$value, 'urk'=>request('urls')[$key]];
+        }, $request->labels) : "";
         return back()->with('success', 'Post created');
     }
     public function store_info(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name'=>'required',
-            'value'=>'required',
-            'access'=>'required|text|enum:public,auth,admin',
+            'data'=>'required',
+            'access'=>'required|in:public,auth,admin',
         ]);
         if ($validator->fails()) {
             # code...
@@ -187,9 +192,28 @@ class PublicController extends Controller
         $filename = time().'_'.random_int(1111,9999).'.'.$request->file('image')->getClientOriginalExtension();
         $request->file('image')->storeAs('public/uploads/images/gallery/', $filename);
 
-        $post_instance = new \App\Models\Info($request->all());
+        $post_instance = new \App\Models\Gallery($request->all());
         $post_instance->name = $filename;
         $post_instance->save();
         return back()->with('success', 'Info saved');
+    }
+    public function delete_service()
+    {
+        $ret = request('id') ? \App\Models\Service::find(request('id'))->delete() : false;
+        return back()->with('message', $ret ? "Service deleted" : "Failed to delete service");
+    }
+    public function delete_info()
+    {
+        $ret = request('id') ? \App\Models\Info::find(request('id'))->delete() : false;
+        return back()->with('message', $ret ? "Info deleted" : "Failed to delete info");
+    }
+    public function delete_gallery()
+    {
+        // dd(storage_path('app/public/uploads/images/gallery/'.\App\Models\Gallery::find(request('id'))->name));
+        if(file_exists(storage_path('app/public/uploads/images/gallery/'.\App\Models\Gallery::find(request('id'))->name))){
+            unlink(storage_path('app/public/uploads/images/gallery/'.\App\Models\Gallery::find(request('id'))->name));
+        }
+        $ret = request('id') ? \App\Models\Gallery::find(request('id'))->delete() : false;
+        return back()->with('message', $ret ? "Item deleted" : "Failed to delete item");
     }
 }

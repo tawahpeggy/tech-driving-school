@@ -14,13 +14,13 @@ return new class extends Migration
     public function up()
     {
         //
-        Schema::create('info', function(Blueprint $table){
-            $table->engine='InnoDB';
-            $table->id();
-            $table->string('name');
-            $table->json('data');
-            $table->enum('access', ['public', 'auth', 'admin']);
-            $table->timestamps();
+        Schema::create('post_links', function(Blueprint $blueprint){
+            $blueprint->engine='InnoDB';
+            $blueprint->id();
+            $blueprint->unsignedBigInteger('post_id');
+            $blueprint->string('label');
+            $blueprint->string('url');
+            $blueprint->timestamps();
         });
     }
 
@@ -32,6 +32,6 @@ return new class extends Migration
     public function down()
     {
         //
-        Schema::dropIfExists('info');
+        Schema::dropIfExists('post_links');
     }
 };

@@ -4,130 +4,104 @@
 
 <div class="w-100 h-100 bg-light py-3">
     <div class="my-1 px-2 w-100">
-        <div class="">
-            <nav>
-                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">ALL</button>
-                    <!-- <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">...</button> -->
-                    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">UPDATE</button>
+        @if(!request('action'))
+        <div class="d-flex justify-content-end py-3">
+            <a href="{{\Request::url().'?action=create'}}" class="rounded py-1 px-3 bg-y t-w fw-bold text-decoration-none">add info</a>
+        </div>
+        <div class="w-100 py-3">
+            <table class="table table-stripped">
+                <thead class="t-w bg-b py-1">
+                    <th class="b-w">#</th>
+                    <th class="b-w">Name</th>
+                    <th class="b-w">Info</th>
+                    <th class="b-w">Access</th>
+                    <th class="b-w"></th>
+                </thead>
+                @php($cnt = 1)
+                @php($bul = false)
+                <tbody>
+                    @forelse(\App\Models\Info::all() as $info)
+                    <tr class="{{$bul ? 't-w bg-y' : 't-b bg-w'}} bb-b pb-1">
+                        <td class="b-w">{{$cnt++}}</td>
+                        <td class="b-w">{{$info->name}}</td>
+                        <td class="b-w">{{$info->data}}</td>
+                        <td class="b-w">{{$info->access}}</td>
+                        <td class="b-w">
+                            <a href="{{\Request::url().'?action=edit'}}" class="px-2 mx-1 rounded text-decoration-none t-success"><i class="fas fa-edit    "> edit</i></a>
+                            <a href="{{\Request::url().'/delete/'.$info->id}}" class="px-2 mx-1 rounded text-decoration-none text-danger"><i class="fas fa-trash-alt    "> delete</i></a>
+                        </td>
+                    </tr>
+                    @php($bul = !$bul)
+                    @empty
+                    <p class="text-center">No data found</p>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+        @endif
+        @if(request('action')=='create')
+        <div class="w-100 py-3">
+            <form action="{{\Request::url()}}" method="post" class="form bg-w rounded-2 b-b col-sm-9 col-md-7 mx-auto">
+                <div class="text-center t-b py-2">
+                    Add Info
                 </div>
-            </nav>
-            <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active py-3" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
-                    <table class="table">
-                        <thead class="bg-y t-b">
-                            <th>#</th>
-                            <th>NAME</th>
-                            <th>BORN ON</th>
-                            <th>NIC</th>
-                            <th>MODE</th>
-                            <th>SESSION</th>
-                            <th></th>
-                        </thead>
-                        <tbody>
-                            @php($cnt = 1)
-                            @forelse(\Illuminate\Support\Facades\DB::table('applications')->where('status', '=', 'pending')->get() as $item)
-                                <tr>
-                                    <td>{{$cnt}}</td>
-                                    <td>{{$item->first_name.' '.$item->last_name}}</td>
-                                    <td>{{date('l dS M Y', strtotime($item->dob))}}</td>
-                                    <td>{{$item->cni_number}}</td>
-                                    <td>{{\App\Models\Mode::find($item->mode)->name ?? '-----'}}</td>
-                                    <td>{{'From '.\App\Models\Sessionz::find($item->session)->start ?? null.' to '.\App\Models\Sessionz::find($item->session)->end ?? '-----'}}</td>
-                                    <td class="bg-y">
-                                        <a href="{{route('admin.applications', $item->id)}}" class="btn bt-sm  t-b text-sm py-1" title="more"><i class="fas fa-eye "></i></button>
-                                        <a href="{{route('admin.accept_application', $item->id)}}" class="btn bt-sm  t-b text-sm py-1" title="accept"><i class="fas fa-check    "></i></a>
-                                        <a href="{{route('admin.reject_application', $item->id)}}" class="btn btn-sm btn-default t-b text-sm" title="reject"><i class="fas fa-trash-alt "></i></a>
-                                    </td>
-                                </tr>
-                                @php($cnt++)
-                                @empty
-                                <div class="my-5 text-center t-b fs-3">No applications available</div>
-                            @endforelse
-                        </tbody>
-                    </table>
-                    <div class="py-3" id="CONTORO" >
-                        @if(request('id') != null)
-                        <div class="w-100">
-                            <?php $apl = \App\Models\Application::find(request('id')); ?>
-                            <div class="d-flex flex-wrap justify-content-center">
-                                <div class="card m-1 col-sm-4 col-md-3 border-0 bg-transparent">
-                                    <div class="card-img-top embed-responsive embed-responsive-16by9 flex-auto">
-                                        <img src="{{asset('storage/uploads/images/passport/'.$apl->passport_photo)}}" alt="PROFILE PICTURE" class="img img-responsive img-thumbnail">
-                                    </div>
-                                    <div class="card-title text-center">PROFILE PICTURE</div>
-                                </div>
-                                <div class="card m-1 col-sm-4 col-md-3 border-0 bg-transparent">
-                                    <div class="card-img-top embed-responsive embed-responsive-16by9 flex-auto">
-                                        <img src="{{asset('storage/uploads/images/id/front/'.$apl->id_front)}}" alt="NIC FRONT" class="img img-responsive img-thumbnail">
-                                    </div>
-                                    <div class="card-title text-center">ID-CARD FRONT</div>
-                                </div>
-                                <div class="card m-1 col-sm-4 col-md-3 border-0 bg-transparent">
-                                    <div class="card-img-top embed-responsive embed-responsive-16by9 flex-auto">
-                                        <img src="{{asset('storage/uploads/images/id/back/'.$apl->id_back)}}" alt="NIC BACK" class="img img-responsive img-thumbnail">
-                                    </div>
-                                    <div class="card-title text-center">ID-CARD BACK</div>
-                                </div>
-                            </div>
-                            <div class="d-flex flex-wrap justify-content-center">
-                                <div class="card m-1 col-sm-4 col-md-3 border-0 bg-transparent">
-                                    <div class="input-group mt-3">
-                                        <span class="input-group-text bg-transparent"><small>First name</small></span>
-                                        <span class="form-control">{{$apl->first_name}}</span>
-                                    </div>
-                                    <div class="input-group mt-3">
-                                        <span class="input-group-text bg-transparent"><small>Last name</small></span>
-                                        <span class="form-control">{{$apl->last_name}}</span>
-                                    </div>
-                                    <div class="input-group mt-3">
-                                        <span class="input-group-text bg-transparent"><small>Born on</small></span>
-                                        <span class="form-control">{{$apl->dob}}</span>
-                                    </div>
-                                </div>
-                                <div class="card m-1 col-sm-4 col-md-3 border-0 bg-transparent">
-                                    <div class="input-group mt-3">
-                                        <span class="input-group-text bg-transparent"><small>Born at</small></span>
-                                        <span class="form-control">{{$apl->pob}}</span>
-                                    </div>
-                                    <div class="input-group mt-3">
-                                        <span class="input-group-text bg-transparent"><small>NIC No</small></span>
-                                        <span class="form-control">{{$apl->cni_number}}</span>
-                                    </div>
-                                    <div class="input-group mt-3">
-                                        <span class="input-group-text bg-transparent"><small>Issued on</small></span>
-                                        <span class="form-control">{{$apl->cni_date}}</span>
-                                    </div>
-                                    
-                                </div>
-                                <div class="card m-1 col-sm-4 col-md-3 border-0 bg-transparent">
-                                    <div class="input-group mt-3">
-                                        <span class="input-group-text bg-transparent"><small>Issued at</small></span>
-                                        <span class="form-control">{{$apl->cni_post}}</span>
-                                    </div>
-                                    <div class="input-group mt-3">
-                                        <span class="input-group-text bg-transparent"><small>Mode</small></span>
-                                        <span class="form-control">{{$apl->mode}}</span>
-                                    </div>
-                                    <div class="input-group mt-3">
-                                        <span class="input-group-text bg-transparent"><small>Session</small></span>
-                                        <span class="form-control">{{$apl->session}}</span>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            <div class="d-flex justify-content-center border-top">
-                                <a href="" class="rounded-pill px-3 py-1 bg-y t-b mx-3 my-2"><i class="fas fa-edit mx-1   "></i>edit</a>
-                                <a href="" class="rounded-pill px-3 py-1 bg-y t-b mx-3 my-2"><i class="fas fa-trash-alt mx-1   "></i>delete</a>
-                            </div>
-                        </div>
-                        @endif
+                @csrf
+                <div class="w-100 bg-light px-4 py-5">
+                    <div class="input-group py-1 t-b">
+                        <span class="input-group-text">name</span>
+                        <input type="text" name="name" id="" class="form-control" required>
+                    </div>
+                    <div class="input-group py-1 t-b">
+                        <span class="input-group-text">access</span>
+                        <select name="access" class="form-control" required id="">
+                            <option value="" selected disabled></option>
+                            <option value="admin">administrative</option>
+                            <option value="public">public</option>
+                        </select>
+                    </div>
+                    <div class="input-group py-1 t-b">
+                        <span class="input-group-text">data</span>
+                        <textarea name="data" id="" rows="4" class="form-control"></textarea>
                     </div>
                 </div>
-
-                
-            </div>
+                <div class="py-3 d-flex justify-content-end px-4">
+                    <input type="submit" value="save" class="t-w bg-b py-1 px-2 rounded border-none" name="" id="">
+                </div>
+            </form>
         </div>
+        @endif
+        @if(request('action')=='edit')
+        <div class="w-100 py-3">
+            @php($info = \App\Models\Info::find(request('id'))
+            <form action="{{\Request::url().'/update/'.request('id')}}" method="post" class="form bg-w rounded-2 b-b col-sm-9 col-md-7 mx-auto">
+                <div class="text-center t-b py-2">
+                    edit Info
+                </div>
+                @csrf
+                <div class="w-100 bg-light px-4 py-5">
+                    <div class="input-group py-1 t-b">
+                        <span class="input-group-text">name</span>
+                        <input type="text" name="name" id="" class="form-control" value="{{$info->name}}" required>
+                    </div>
+                    <div class="input-group py-1 t-b">
+                        <span class="input-group-text">access</span>
+                        <select name="access" class="form-control" required id="">
+                            <option value="" selected disabled></option>
+                            <option value="admin" {{$inf0->access == 'admin' ? selected : ''}}>administrative</option>
+                            <option value="public" {{$inf0->access == 'public' ? selected : ''}}>public</option>
+                        </select>
+                    </div>
+                    <div class="input-group py-1 t-b">
+                        <span class="input-group-text">data</span>
+                        <textarea name="data" id="" rows="4" class="form-control">{{$info->data}}</textarea>
+                    </div>
+                </div>
+                <div class="py-3 d-flex justify-content-end px-4">
+                    <input type="submit" value="update" class="t-w bg-b py-1 px-2 rounded border-none" name="" id="">
+                </div>
+            </form>
+        </div>
+        @endif
     </div>
 </div>
 @endsection
