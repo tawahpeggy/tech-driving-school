@@ -24,11 +24,11 @@
                         <td class="border border-bottom-0 border-top-0">{{$cnt++}}</td>
                         <td class="border border-bottom-0 border-top-0">{{$service->name}}</td>
                         <td class="border border-bottom-0 border-top-0">{{$service->text}}</td>
-                        <td class="border border-bottom-0 border-top-0"><span>
+                        <td class="border border-bottom-0 border-top-0 d-flex flex-wrap">
                             <a href="{{\Request::url().'?action=details&id='.$service->id}}" class="b-w rounded bg-y t-q py-1 px-2 text-decoration-none d-inline-block"><i class="fas fa-eye    "></i></a>
                             <a href="{{\Request::url().'?action=edit&id='.$service->id}}" class="b-w rounded bg-y t-q py-1 px-2 text-decoration-none d-inline-block"><i class="fas fa-edit    "></i></a>
                             <a href="{{\Request::url().'/delete/'.$service->id}}" class="b-w rounded bg-y t-q m-2 py-1 px-2 text-decoration-none d-inline-block"><i class="fas fa-trash-alt    "></i></a>
-                        </span></td>
+                        </td>
                     </tr>
                     @empty
                     <p class="w-100 text-center">No services available</p>
@@ -60,7 +60,18 @@
             </div>
         @endif
         @if(request('action')=='details')
-        
+            @php($service = \App\Models\Service::find(request('id')))
+            <div class="col-sm-11 col-md-9 mx-auto">
+                <div class="d-flex justify-content-center h4 fw-bold">
+                    @if(isset($service->icon) && $service->icon != null)
+                    <img src="{{asset('storage/uploads/images/services/'.$service->icon ?? '')}}" alt="" style="width: 4rem; height: 4rem;" class="img-rounded img">
+                    @else
+                    <i class="fas fa-server fa-3x t-b img img-thumbnail bg-w border"></i>
+                    @endif
+                </div>
+                <div class="text-center py-1 t-y h4 fw-bold">{{$service->name}}</div>
+                <div class="text-center py-1 t-b h4 fw-bold">{{$service->text}}</div>
+            </div>
         @endif
         @if(request('action')=='edit')
             @php($service = \App\Models\Service::find(request('id') ?? 0));
